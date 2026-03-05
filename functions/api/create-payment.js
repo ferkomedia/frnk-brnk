@@ -3,10 +3,24 @@ export async function onRequestPost(context) {
 
   try {
     const data = await request.json();
-    const { name, email, phone, quantity, packeta_point_id, packeta_point_name, shipping_price, total } = data;
+    const {
+      name, email, phone, quantity,
+      delivery_type, delivery_country,
+      packeta_point_id, packeta_point_name,
+      address_street, address_zip, address_city,
+      shipping_price, total
+    } = data;
 
-    if (!name || !email || !phone || !packeta_point_id) {
+    if (!name || !email || !phone) {
       return Response.json({ error: 'Vyplňte všetky povinné údaje' }, { status: 400 });
+    }
+
+    // Validácia doručenia
+    if (delivery_type === 'pickup' && !packeta_point_id) {
+      return Response.json({ error: 'Vyberte výdajné miesto' }, { status: 400 });
+    }
+    if (delivery_type === 'address' && (!address_street || !address_zip || !address_city)) {
+      return Response.json({ error: 'Vyplňte adresu doručenia' }, { status: 400 });
     }
 
     if (!total || total <= 0) {
@@ -30,10 +44,15 @@ export async function onRequestPost(context) {
         'metadata[customer_name]': name,
         'metadata[customer_email]': email,
         'metadata[customer_phone]': phone,
-        'metadata[packeta_point_id]': packeta_point_id,
-        'metadata[packeta_point_name]': packeta_point_name || '',
         'metadata[quantity]': quantity.toString(),
-        'metadata[shipping_price]': shipping_price.toString()
+        'metadata[shipping_price]': shipping_price.toString(),
+        'metadata[delivery_type]': delivery_type || 'pickup',
+        'metadata[delivery_country]': delivery_country || '',
+        'metadata[packeta_point_id]': packeta_point_id || '',
+        'metadata[packeta_point_name]': packeta_point_name || '',
+        'metadata[address_street]': address_street || '',
+        'metadata[address_zip]': address_zip || '',
+        'metadata[address_city]': address_city || ''
       })
     });
 
