@@ -601,7 +601,7 @@ function openPacketa(){
   }
   const country=countrySelect.value;
   if(!country)return;
-  Packeta.Widget.pick(packetaApiKey,onPacketaSelected,{language:'sk',country:country,vendors:['packeta']});
+  Packeta.Widget.pick(packetaApiKey,onPacketaSelected,{language:'sk',country:country});
 }
 function onPacketaSelected(point){if(point){document.getElementById('packeta-point-id').value=point.id;document.getElementById('point-name').textContent=point.name;document.getElementById('point-address').textContent=point.street+', '+point.city+', '+point.country;document.getElementById('select-packeta').style.display='none';document.getElementById('packeta-selected').classList.remove('hidden');validateForm()}}
 document.getElementById('select-packeta')?.addEventListener('click',openPacketa);
