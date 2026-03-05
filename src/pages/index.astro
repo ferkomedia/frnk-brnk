@@ -40,9 +40,10 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
       <p class="hero-author">Viliam Hriadel</p>
       <p class="hero-desc">Veršovaný príbeh dvoch sýkoriek — bratov Frnka a Brnka, ktorí sa vracajú z potuliek svetom domov. Kniha plná krásnych ilustrácií a rodinných hodnôt pre deti od 4 do 10 rokov.</p>
       <div class="hero-price">
-        <span class="price-tag">12 €</span>
+        <span class="price-tag">12 <small>€</small></span>
         <span class="price-note">Doručenie do celej Európy</span>
       </div>
+      <p class="exclusive-note">Dostupné exkluzívne len na tejto stránke</p>
       <a href="#objednat" class="hero-btn">Objednať knihu</a>
     </div>
   </div>
@@ -122,7 +123,6 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
             {discounts.map(d => (<div class="tier"><span class="tier-count">{d.min}+ kníh</span><span class="tier-discount">−{d.discount}%</span></div>))}
           </div>
           <div class="free-shipping-note">
-            <span class="free-shipping-icon">🚚</span>
             <span>Pri objednávke <strong>10+ kníh</strong> doručenie Packeta <strong>ZDARMA!</strong></span>
           </div>
         </div>
@@ -307,8 +307,10 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 .hero-text h1{font-size:clamp(2.5rem,5vw,3.5rem);line-height:1.15;color:var(--color-text);margin-bottom:0.5rem}
 .hero-author{font-size:1.2rem;color:var(--color-text-light);margin-bottom:1.5rem}
 .hero-desc{color:var(--color-text-light);margin-bottom:2rem;max-width:440px}
-.hero-price{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem}
-.price-tag{font-size:2.5rem;font-weight:700;color:var(--color-forest)}
+.hero-price{display:flex;align-items:baseline;gap:1rem;margin-bottom:0.75rem}
+.price-tag{font-size:2.5rem;font-weight:700;color:var(--color-forest);display:flex;align-items:baseline}
+.price-tag small{font-size:1.5rem;margin-left:0.25rem}
+.exclusive-note{font-size:0.9rem;color:var(--color-text-light);margin-bottom:1.5rem;font-style:italic}
 .price-note{color:var(--color-text-light)}
 .hero-btn{display:inline-block;background:var(--color-sun);color:var(--color-text);padding:1rem 2rem;border-radius:8px;font-weight:700;transition:all 0.25s}
 .hero-btn:hover{background:var(--color-earth);color:white;transform:translateY(-2px)}
@@ -364,8 +366,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 .product-info li:last-child{border-bottom:none}
 .discount-box{background:linear-gradient(135deg,var(--color-sun-light),var(--color-sun));padding:1.5rem;border-radius:16px}
 .discount-box h4{font-size:1.1rem;margin-bottom:0.25rem;color:var(--color-text)}
-.free-shipping-note{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--color-earth);display:flex;align-items:center;gap:0.5rem;font-size:0.95rem;color:var(--color-text)}
-.free-shipping-icon{font-size:1.3rem}
+.free-shipping-note{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--color-earth);font-size:0.95rem;color:var(--color-text);text-align:center}
 .discount-note{font-size:0.9rem;color:var(--color-text-light);margin-bottom:1rem}
 .discount-tiers{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
 .tier{background:white;padding:0.75rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;transition:all 0.25s}
@@ -486,8 +487,15 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
   .decorations{display:none}
 }
 @media(max-width:600px){
+  .nav-inner{padding:0.75rem 1rem}
+  .logo{font-size:1rem}
+  .nav-links{gap:0.5rem}
   .nav-links a:not(.nav-btn){display:none}
-  .hero{padding-top:6rem}
+  .nav-btn{padding:0.4rem 0.75rem;font-size:0.9rem}
+  .hero{padding-top:5rem}
+  .hero-price{flex-direction:column;align-items:center;gap:0.25rem}
+  .price-tag{font-size:3rem}
+  .exclusive-note{text-align:center}
   .book-frame{width:240px;height:336px}
   .form-row.two-col{grid-template-columns:1fr}
   .discount-tiers{grid-template-columns:1fr}
