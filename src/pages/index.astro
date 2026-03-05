@@ -71,7 +71,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
         <p>Celá kniha je napísaná vo veršoch, ktoré sa ľahko čítajú a deti si ich rýchlo zapamätajú</p>
       </div>
       <div class="feature">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="9" r="1" fill="currentColor"/></svg></div>
         <h3>Pre deti 4–10 rokov</h3>
         <p>Ideálna dĺžka kapitol na večerné čítanie pred spaním pre celú rodinu</p>
       </div>
@@ -395,7 +395,8 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 .qty-selector input{width:60px;height:44px;border:none;text-align:center;font-size:1.1rem;font-family:var(--font-main);font-weight:700;background:white}
 .qty-selector input:focus{outline:none}
 .price-calc{background:var(--color-paper);padding:1rem 1.25rem;border-radius:8px}
-.calc-row{display:flex;justify-content:space-between;padding:0.4rem 0;color:var(--color-text-light)}
+.calc-row{display:flex;justify-content:space-between;padding:0.4rem 0;color:var(--color-text-light);flex-wrap:nowrap;gap:1rem}
+.calc-row span{white-space:nowrap}
 .calc-row span:last-child{font-weight:700;color:var(--color-text)}
 .discount-row{color:var(--color-forest)!important}
 .discount-row span{color:var(--color-forest)!important}
