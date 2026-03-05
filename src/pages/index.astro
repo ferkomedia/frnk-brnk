@@ -530,7 +530,7 @@ function validateForm(){const name=document.getElementById('name').value,email=d
 ['name','email','phone'].forEach(id=>{document.getElementById(id)?.addEventListener('input',validateForm)});
 
 // Stripe Elements
-const stripeKey='pk_live_51SIajzK7AvTQZ0XNgrY5daEJeZX4ew0fxpRaVwgahpvPAamiISdRB0SpwlPYtbrvnsJritP542yNLaZximzBZwZo007qtYg79p';
+const stripeKey='pk_test_51SIajzK7AvTQZ0XNzhrrXXBkPm4sTDccN4bDAL9Ra8EFo1At4WBAeo7LPjuv4iuxFtxDfVHGIxguEjlSRrBl1kNO00mzOefUZd';
 let stripe,cardElement;
 
 function initStripe(){
