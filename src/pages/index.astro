@@ -161,7 +161,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
           </div>
           <div class="form-section">
             <h4>Platba kartou</h4>
-            <div id="card-element" class="stripe-box"></div>
+            <div id="card-element" class="stripe-element"></div>
             <div id="card-errors" class="card-errors"></div>
           </div>
           <div class="order-total">
@@ -399,7 +399,10 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 #change-packeta{background:none;border:none;color:var(--color-forest);font-family:var(--font-main);font-weight:700;cursor:pointer}
 #change-packeta:hover{text-decoration:underline}
 .stripe-box{padding:1rem;border:1px solid var(--color-border);border-radius:8px;background:white;color:var(--color-text-light);font-size:0.9rem;min-height:44px}
-.card-errors{color:#e53935;font-size:0.85rem;margin-top:0.5rem}
+.stripe-element{padding:1rem;border:1px solid var(--color-border);border-radius:8px;background:white;min-height:44px}
+.stripe-element.StripeElement--focus{border-color:var(--color-forest);box-shadow:0 0 0 3px rgba(74,124,89,0.1)}
+.stripe-element.StripeElement--invalid{border-color:#e53935}
+.card-errors{color:#e53935;font-size:0.85rem;margin-top:0.5rem;min-height:1.2em}
 .order-total{background:var(--color-paper);padding:1.25rem;border-radius:8px}
 .total-row{display:flex;justify-content:space-between;padding:0.4rem 0;color:var(--color-text-light)}
 .total-row.final{border-top:1px solid var(--color-border);margin-top:0.5rem;padding-top:0.75rem;font-size:1.2rem;font-weight:700;color:var(--color-text)}
@@ -526,7 +529,81 @@ document.getElementById('change-packeta')?.addEventListener('click',()=>{documen
 function validateForm(){const name=document.getElementById('name').value,email=document.getElementById('email').value,phone=document.getElementById('phone').value,packeta=document.getElementById('packeta-point-id').value;document.getElementById('submit-btn').disabled=!(name&&email&&phone&&packeta)}
 ['name','email','phone'].forEach(id=>{document.getElementById(id)?.addEventListener('input',validateForm)});
 
-document.getElementById('order-form')?.addEventListener('submit',async(e)=>{e.preventDefault();const btn=document.getElementById('submit-btn');btn.disabled=true;btn.textContent='Spracovávam...';try{const formData={name:document.getElementById('name').value,email:document.getElementById('email').value,phone:document.getElementById('phone').value,quantity:parseInt(document.getElementById('quantity').value)||1,packeta_point_id:document.getElementById('packeta-point-id').value,packeta_point_name:document.getElementById('point-name').textContent,shipping_price:shippingPrice,total:parseFloat(document.getElementById('total-final').textContent.replace(' €','').replace(',','.'))};const response=await fetch('/api/create-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(formData)});const data=await response.json();if(data.error){alert('Chyba: '+data.error);btn.disabled=false;btn.textContent='Dokončiť objednávku';return}if(data.url){window.location.href=data.url}}catch(err){alert('Chyba pri spracovaní. Skúste znova.');btn.disabled=false;btn.textContent='Dokončiť objednávku'}});
+// Stripe Elements
+const stripeKey='pk_live_51SIajzK7AvTQ0XNgrY5daEJeZX4ew0fxpRaVwgahpvPAamiISdRB0SpwlPYtbrvnsJritP542yNLaZximzBZwZo007qtYg79p';
+let stripe,cardElement;
+
+function initStripe(){
+  if(typeof Stripe==='undefined'){setTimeout(initStripe,500);return}
+  stripe=Stripe(stripeKey);
+  const elements=stripe.elements({locale:'sk'});
+  cardElement=elements.create('card',{
+    style:{
+      base:{fontFamily:'Andika, Georgia, serif',fontSize:'16px',color:'#2c3e2d','::placeholder':{color:'#5a6b5c'}},
+      invalid:{color:'#e53935'}
+    }
+  });
+  cardElement.mount('#card-element');
+  cardElement.on('change',(e)=>{
+    document.getElementById('card-errors').textContent=e.error?e.error.message:'';
+  });
+}
+initStripe();
+
+document.getElementById('order-form')?.addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;
+  btn.textContent='Spracovávam platbu...';
+
+  try{
+    const formData={
+      name:document.getElementById('name').value,
+      email:document.getElementById('email').value,
+      phone:document.getElementById('phone').value,
+      quantity:parseInt(document.getElementById('quantity').value)||1,
+      packeta_point_id:document.getElementById('packeta-point-id').value,
+      packeta_point_name:document.getElementById('point-name').textContent,
+      shipping_price:shippingPrice,
+      total:parseFloat(document.getElementById('total-final').textContent.replace(' €','').replace(',','.'))
+    };
+
+    // 1. Vytvorenie PaymentIntent na serveri
+    const response=await fetch('/api/create-payment',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(formData)
+    });
+    const data=await response.json();
+
+    if(data.error){
+      document.getElementById('card-errors').textContent=data.error;
+      btn.disabled=false;
+      btn.textContent='Dokončiť objednávku';
+      return;
+    }
+
+    // 2. Potvrdenie platby cez Stripe Elements
+    const{error,paymentIntent}=await stripe.confirmCardPayment(data.clientSecret,{
+      payment_method:{
+        card:cardElement,
+        billing_details:{name:formData.name,email:formData.email,phone:formData.phone}
+      }
+    });
+
+    if(error){
+      document.getElementById('card-errors').textContent=error.message;
+      btn.disabled=false;
+      btn.textContent='Dokončiť objednávku';
+    }else if(paymentIntent.status==='succeeded'){
+      window.location.href='/dakujeme?payment_id='+paymentIntent.id;
+    }
+  }catch(err){
+    document.getElementById('card-errors').textContent='Chyba pri spracovaní. Skúste znova.';
+    btn.disabled=false;
+    btn.textContent='Dokončiť objednávku';
+  }
+});
 
 document.querySelectorAll('[data-modal]').forEach(btn=>{btn.addEventListener('click',()=>{const id=btn.getAttribute('data-modal');document.getElementById('modal-'+id)?.classList.add('active');document.body.style.overflow='hidden'})});
 document.querySelectorAll('.modal-close, .modal-backdrop').forEach(el=>{el.addEventListener('click',()=>{document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active'));document.body.style.overflow=''})});
@@ -550,7 +627,7 @@ if('serviceWorker' in navigator){
       });
     });
   });
-  
+
   let refreshing=false;
   navigator.serviceWorker.addEventListener('controllerchange',()=>{
     if(!refreshing){refreshing=true;window.location.reload()}
