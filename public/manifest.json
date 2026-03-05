@@ -4,10 +4,16 @@
   "description": "Detská kniha od Viliama Hriadela - objednajte online s doručením do celej Európy",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fefcf6",
+  "background_color": "#4a7c59",
   "theme_color": "#4a7c59",
   "orientation": "portrait-primary",
   "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
     {
       "src": "/icons/icon-192.png",
       "sizes": "192x192",
