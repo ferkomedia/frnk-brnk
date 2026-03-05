@@ -1,0 +1,27 @@
+{
+  "name": "Frnk brnk do sveta",
+  "short_name": "Frnk brnk",
+  "description": "Detská kniha od Viliama Hriadela - objednajte online s doručením do celej Európy",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fefcf6",
+  "theme_color": "#4a7c59",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["books", "shopping"],
+  "lang": "sk",
+  "dir": "ltr"
+}
