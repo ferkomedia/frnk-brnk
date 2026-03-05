@@ -40,7 +40,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
       <p class="hero-author">Viliam Hriadel</p>
       <p class="hero-desc">Veršovaný príbeh dvoch sýkoriek — bratov Frnka a Brnka, ktorí sa vracajú z potuliek svetom domov. Kniha plná krásnych ilustrácií a rodinných hodnôt pre deti od 4 do 10 rokov.</p>
       <div class="hero-price">
-        <span class="price-tag">12 <small>€</small></span>
+        <span class="price-tag">12 €</span>
         <span class="price-note">Doručenie do celej Európy</span>
       </div>
       <p class="exclusive-note">Dostupné exkluzívne len na tejto stránke</p>
@@ -165,7 +165,20 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
           </div>
           <div class="form-section">
             <h4>Platba kartou</h4>
-            <div id="card-element" class="stripe-element"></div>
+            <div class="form-group">
+              <label>Číslo karty</label>
+              <div id="card-number" class="stripe-element"></div>
+            </div>
+            <div class="form-row two-col">
+              <div class="form-group">
+                <label>Platnosť</label>
+                <div id="card-expiry" class="stripe-element"></div>
+              </div>
+              <div class="form-group">
+                <label>CVC</label>
+                <div id="card-cvc" class="stripe-element"></div>
+              </div>
+            </div>
             <div id="card-errors" class="card-errors"></div>
           </div>
           <div class="order-total">
@@ -308,8 +321,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 .hero-author{font-size:1.2rem;color:var(--color-text-light);margin-bottom:1.5rem}
 .hero-desc{color:var(--color-text-light);margin-bottom:2rem;max-width:440px}
 .hero-price{display:flex;align-items:baseline;gap:1rem;margin-bottom:0.75rem}
-.price-tag{font-size:2.5rem;font-weight:700;color:var(--color-forest);display:flex;align-items:baseline}
-.price-tag small{font-size:1.5rem;margin-left:0.25rem}
+.price-tag{font-size:2.5rem;font-weight:700;color:var(--color-forest);white-space:nowrap}
 .exclusive-note{font-size:0.9rem;color:var(--color-text-light);margin-bottom:1.5rem;font-style:italic}
 .price-note{color:var(--color-text-light)}
 .hero-btn{display:inline-block;background:var(--color-sun);color:var(--color-text);padding:1rem 2rem;border-radius:8px;font-weight:700;transition:all 0.25s}
@@ -545,21 +557,26 @@ function validateForm(){const name=document.getElementById('name').value,email=d
 
 // Stripe Elements
 const stripeKey='pk_test_51SIajzK7AvTQZ0XNzhrrXXBkPm4sTDccN4bDAL9Ra8EFo1At4WBAeo7LPjuv4iuxFtxDfVHGIxguEjlSRrBl1kNO00mzOefUZd';
-let stripe,cardElement;
+let stripe,cardNumber,cardExpiry,cardCvc;
 
 function initStripe(){
   if(typeof Stripe==='undefined'){setTimeout(initStripe,500);return}
   stripe=Stripe(stripeKey);
   const elements=stripe.elements({locale:'sk'});
-  cardElement=elements.create('card',{
-    style:{
-      base:{fontFamily:'Andika, Georgia, serif',fontSize:'16px',color:'#2c3e2d','::placeholder':{color:'#5a6b5c'}},
-      invalid:{color:'#e53935'}
-    }
-  });
-  cardElement.mount('#card-element');
-  cardElement.on('change',(e)=>{
-    document.getElementById('card-errors').textContent=e.error?e.error.message:'';
+  const style={
+    base:{fontFamily:'Andika, Georgia, serif',fontSize:'16px',color:'#2c3e2d','::placeholder':{color:'#5a6b5c'}},
+    invalid:{color:'#e53935'}
+  };
+  cardNumber=elements.create('cardNumber',{style,showIcon:true});
+  cardExpiry=elements.create('cardExpiry',{style});
+  cardCvc=elements.create('cardCvc',{style});
+  cardNumber.mount('#card-number');
+  cardExpiry.mount('#card-expiry');
+  cardCvc.mount('#card-cvc');
+  [cardNumber,cardExpiry,cardCvc].forEach(el=>{
+    el.on('change',(e)=>{
+      document.getElementById('card-errors').textContent=e.error?e.error.message:'';
+    });
   });
 }
 initStripe();
@@ -600,7 +617,7 @@ document.getElementById('order-form')?.addEventListener('submit',async(e)=>{
     // 2. Potvrdenie platby cez Stripe Elements
     const{error,paymentIntent}=await stripe.confirmCardPayment(data.clientSecret,{
       payment_method:{
-        card:cardElement,
+        card:cardNumber,
         billing_details:{name:formData.name,email:formData.email,phone:formData.phone}
       }
     });
