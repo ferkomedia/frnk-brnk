@@ -105,7 +105,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 <section class="order" id="objednat">
   <div class="order-inner">
     <h2>Objednajte si knihu</h2>
-    <p class="order-subtitle">Bezpečná platba kartou · Doručenie cez Packetu do celej Európy</p>
+    <p class="order-subtitle">Bezpečná platba kartou · Doručenie cez Packeta do celej Európy</p>
     <div class="order-grid">
       <div class="order-left">
         <div class="product-card">
@@ -152,8 +152,44 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
           </div>
           <div class="form-section">
             <h4>Doručenie cez Packeta</h4>
-            <p class="field-note">Vyberte výdajné miesto kdekoľvek v Európe</p>
-            <button type="button" id="select-packeta" class="packeta-btn">
+            <p class="field-note">Vyberte krajinu a potom výdajné miesto</p>
+            <div class="form-group">
+              <label>Krajina doručenia</label>
+              <select id="delivery-country" class="form-select">
+                <option value="">— Vyberte krajinu —</option>
+                <option value="sk">🇸🇰 Slovensko</option>
+                <option value="cz">🇨🇿 Česko</option>
+                <option value="de">🇩🇪 Nemecko</option>
+                <option value="at">🇦🇹 Rakúsko</option>
+                <option value="pl">🇵🇱 Poľsko</option>
+                <option value="hu">🇭🇺 Maďarsko</option>
+                <option value="gb">🇬🇧 Veľká Británia</option>
+                <option value="ie">🇮🇪 Írsko</option>
+                <option value="nl">🇳🇱 Holandsko</option>
+                <option value="be">🇧🇪 Belgicko</option>
+                <option value="fr">🇫🇷 Francúzsko</option>
+                <option value="it">🇮🇹 Taliansko</option>
+                <option value="es">🇪🇸 Španielsko</option>
+                <option value="pt">🇵🇹 Portugalsko</option>
+                <option value="ch">🇨🇭 Švajčiarsko</option>
+                <option value="ro">🇷🇴 Rumunsko</option>
+                <option value="bg">🇧🇬 Bulharsko</option>
+                <option value="hr">🇭🇷 Chorvátsko</option>
+                <option value="si">🇸🇮 Slovinsko</option>
+                <option value="se">🇸🇪 Švédsko</option>
+                <option value="dk">🇩🇰 Dánsko</option>
+                <option value="fi">🇫🇮 Fínsko</option>
+                <option value="ee">🇪🇪 Estónsko</option>
+                <option value="lv">🇱🇻 Lotyšsko</option>
+                <option value="lt">🇱🇹 Litva</option>
+                <option value="gr">🇬🇷 Grécko</option>
+                <option value="cy">🇨🇾 Cyprus</option>
+                <option value="mt">🇲🇹 Malta</option>
+                <option value="lu">🇱🇺 Luxembursko</option>
+                <option value="rs">🇷🇸 Srbsko</option>
+              </select>
+            </div>
+            <button type="button" id="select-packeta" class="packeta-btn" disabled>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               Vybrať výdajné miesto
             </button>
@@ -198,7 +234,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
   <div class="trust-inner">
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Bezpečná platba</span></div>
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Doručenie 2–5 dní</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span> Do 30+ krajín Európy</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>30+ krajín Európy</span></div>
   </div>
 </section>
 
@@ -407,6 +443,9 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 .form-row.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .field label{display:block;font-size:0.9rem;margin-bottom:0.4rem;color:var(--color-text)}
 .field input{width:100%;padding:0.75rem 1rem;border:1px solid var(--color-border);border-radius:8px;font-size:1rem;font-family:var(--font-main);transition:all 0.25s}
+.form-select{width:100%;padding:0.75rem 1rem;border:1px solid var(--color-border);border-radius:8px;font-size:1rem;font-family:var(--font-main);background:white;cursor:pointer;transition:all 0.25s}
+.form-select:focus{outline:none;border-color:var(--color-forest);box-shadow:0 0 0 3px rgba(74,124,89,0.15)}
+.packeta-btn:disabled{opacity:0.5;cursor:not-allowed}
 .field input:focus{outline:none;border-color:var(--color-forest);box-shadow:0 0 0 3px rgba(74,124,89,0.1)}
 .field-note{font-size:0.9rem;color:var(--color-text-light);margin-bottom:1rem}
 .packeta-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:0.75rem;padding:1rem;background:var(--color-paper);border:1px dashed var(--color-border);border-radius:8px;font-size:1rem;font-family:var(--font-main);color:var(--color-text);cursor:pointer;transition:all 0.25s}
@@ -538,21 +577,33 @@ let shippingPrice=0;
 let selectedCountry='';
 function getDiscount(qty){for(let i=discounts.length-1;i>=0;i--)if(qty>=discounts[i].min)return discounts[i].discount;return 0}
 function updateTotal(){const booksText=document.getElementById('total-books').textContent,booksPrice=parseFloat(booksText.replace(' €','').replace(',','.'));if(selectedCountry){document.getElementById('total-final').textContent=(booksPrice+shippingPrice).toFixed(2)+' €'}else{document.getElementById('total-final').textContent='—'}}
-function updateShipping(country){if(country)selectedCountry=country;const qty=parseInt(document.getElementById('quantity').value)||1;if(qty>=10){shippingPrice=0;document.getElementById('total-shipping').textContent='ZDARMA';document.getElementById('total-shipping').style.color='var(--color-forest)';document.getElementById('total-shipping').style.fontWeight='bold'}else if(selectedCountry){const prices={'sk':3.40,'cz':4.10,'de':6.90,'at':6.90,'pl':5.50,'hu':5.50,'gb':8.90,'ie':9.90};shippingPrice=prices[selectedCountry.toLowerCase()]||7.90;document.getElementById('total-shipping').textContent=shippingPrice.toFixed(2)+' €';document.getElementById('total-shipping').style.color='';document.getElementById('total-shipping').style.fontWeight=''}updateTotal()}
+function updateShipping(country){if(country)selectedCountry=country;const qty=parseInt(document.getElementById('quantity').value)||1;if(qty>=10){shippingPrice=0;document.getElementById('total-shipping').textContent='ZDARMA';document.getElementById('total-shipping').style.color='var(--color-forest)';document.getElementById('total-shipping').style.fontWeight='bold'}else if(selectedCountry){const prices={'sk':3.40,'cz':4.10,'de':6.90,'at':6.90,'pl':5.50,'hu':5.50,'gb':8.90,'ie':9.90,'nl':7.90,'be':7.90,'fr':8.90,'it':8.90,'es':9.90,'pt':9.90,'ch':9.90,'ro':6.90,'bg':6.90,'hr':5.90,'si':5.90,'se':9.90,'dk':8.90,'fi':9.90,'ee':6.90,'lv':6.90,'lt':6.90,'gr':9.90,'cy':12.90,'mt':12.90,'lu':7.90,'rs':7.90};shippingPrice=prices[selectedCountry.toLowerCase()]||9.90;document.getElementById('total-shipping').textContent=shippingPrice.toFixed(2)+' €';document.getElementById('total-shipping').style.color='';document.getElementById('total-shipping').style.fontWeight=''}updateTotal()}
 function updatePrices(){const qty=parseInt(qtyInput.value)||1,discount=getDiscount(qty),subtotal=qty*UNIT_PRICE,discountAmount=subtotal*(discount/100),finalBooks=subtotal-discountAmount;document.getElementById('unit-price').textContent=UNIT_PRICE.toFixed(2)+' €';document.getElementById('subtotal').textContent=finalBooks.toFixed(2)+' €';document.getElementById('total-books').textContent=finalBooks.toFixed(2)+' €';const discountRow=document.getElementById('discount-row');if(discount>0){discountRow.classList.remove('hidden');document.getElementById('discount-percent').textContent='('+discount+'%)';document.getElementById('discount-amount').textContent='−'+discountAmount.toFixed(2)+' €'}else{discountRow.classList.add('hidden')}if(selectedCountry)updateShipping();else updateTotal()}
 document.getElementById('qty-minus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val>1){qtyInput.value=val-1;updatePrices()}});
 document.getElementById('qty-plus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val<100){qtyInput.value=val+1;updatePrices()}});
 qtyInput?.addEventListener('change',()=>{let val=parseInt(qtyInput.value)||1;if(val<1)val=1;if(val>100)val=100;qtyInput.value=val;updatePrices()});
 
 const packetaApiKey='4d7f960a836e9a3ddb03aebdeb2978e3';
+const countrySelect=document.getElementById('delivery-country');
+const packetaBtn=document.getElementById('select-packeta');
+
+countrySelect?.addEventListener('change',()=>{
+  packetaBtn.disabled=!countrySelect.value;
+  if(countrySelect.value){
+    updateShipping(countrySelect.value);
+  }
+});
+
 function openPacketa(){
   if(typeof Packeta==='undefined'){
     setTimeout(openPacketa,500);
     return;
   }
-  Packeta.Widget.pick(packetaApiKey,onPacketaSelected,{language:'sk',country:'sk,cz,de,at,pl,hu,gb,ie,nl,be,fr,it,es,pt,ch,ro,bg,hr,si',vendors:['packeta']});
+  const country=countrySelect.value;
+  if(!country)return;
+  Packeta.Widget.pick(packetaApiKey,onPacketaSelected,{language:'sk',country:country,vendors:['packeta']});
 }
-function onPacketaSelected(point){if(point){document.getElementById('packeta-point-id').value=point.id;document.getElementById('point-name').textContent=point.name;document.getElementById('point-address').textContent=`${point.street}, ${point.city}, ${point.country}`;document.getElementById('select-packeta').style.display='none';document.getElementById('packeta-selected').classList.remove('hidden');updateShipping(point.country);validateForm()}}
+function onPacketaSelected(point){if(point){document.getElementById('packeta-point-id').value=point.id;document.getElementById('point-name').textContent=point.name;document.getElementById('point-address').textContent=point.street+', '+point.city+', '+point.country;document.getElementById('select-packeta').style.display='none';document.getElementById('packeta-selected').classList.remove('hidden');validateForm()}}
 document.getElementById('select-packeta')?.addEventListener('click',openPacketa);
 document.getElementById('change-packeta')?.addEventListener('click',()=>{document.getElementById('select-packeta').style.display='flex';document.getElementById('packeta-selected').classList.add('hidden');openPacketa()});
 
