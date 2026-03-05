@@ -2,8 +2,8 @@ export async function onRequestPost(context) {
   const { request, env } = context;
   
   const RESEND_API_KEY = env.RESEND_API_KEY;
-  const FROM_EMAIL = 'objednavky@frnk-brnk.sk';
-  const NOTIFY_EMAIL = 'objednavky@frnk-brnk.sk';
+  const FROM_EMAIL = 'objednavky@ferkomedia.sk';
+  const NOTIFY_EMAIL = 'info@ferkomedia.sk';
   
   try {
     const payload = await request.json();
