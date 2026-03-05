@@ -121,6 +121,10 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
           <div class="discount-tiers">
             {discounts.map(d => (<div class="tier"><span class="tier-count">{d.min}+ kníh</span><span class="tier-discount">−{d.discount}%</span></div>))}
           </div>
+          <div class="free-shipping-note">
+            <span class="free-shipping-icon">🚚</span>
+            <span>Pri objednávke <strong>10+ kníh</strong> doručenie Packeta <strong>ZDARMA!</strong></span>
+          </div>
         </div>
       </div>
       <div class="order-right">
@@ -360,6 +364,8 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 .product-info li:last-child{border-bottom:none}
 .discount-box{background:linear-gradient(135deg,var(--color-sun-light),var(--color-sun));padding:1.5rem;border-radius:16px}
 .discount-box h4{font-size:1.1rem;margin-bottom:0.25rem;color:var(--color-text)}
+.free-shipping-note{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--color-earth);display:flex;align-items:center;gap:0.5rem;font-size:0.95rem;color:var(--color-text)}
+.free-shipping-icon{font-size:1.3rem}
 .discount-note{font-size:0.9rem;color:var(--color-text-light);margin-bottom:1rem}
 .discount-tiers{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
 .tier{background:white;padding:0.75rem;border-radius:8px;display:flex;justify-content:space-between;align-items:center;transition:all 0.25s}
@@ -504,15 +510,15 @@ document.querySelector('.book-frame')?.addEventListener('mouseenter',stopAuto);
 document.querySelector('.book-frame')?.addEventListener('mouseleave',startAuto);
 
 const UNIT_PRICE=12,qtyInput=document.getElementById('quantity');
+let shippingPrice=0;
+let selectedCountry='';
 function getDiscount(qty){for(let i=discounts.length-1;i>=0;i--)if(qty>=discounts[i].min)return discounts[i].discount;return 0}
-function updatePrices(){const qty=parseInt(qtyInput.value)||1,discount=getDiscount(qty),subtotal=qty*UNIT_PRICE,discountAmount=subtotal*(discount/100),finalBooks=subtotal-discountAmount;document.getElementById('unit-price').textContent=UNIT_PRICE.toFixed(2)+' €';document.getElementById('subtotal').textContent=finalBooks.toFixed(2)+' €';document.getElementById('total-books').textContent=finalBooks.toFixed(2)+' €';const discountRow=document.getElementById('discount-row');if(discount>0){discountRow.classList.remove('hidden');document.getElementById('discount-percent').textContent=`(${discount}%)`;document.getElementById('discount-amount').textContent='−'+discountAmount.toFixed(2)+' €'}else{discountRow.classList.add('hidden')}updateTotal()}
+function updateTotal(){const booksText=document.getElementById('total-books').textContent,booksPrice=parseFloat(booksText.replace(' €','').replace(',','.'));if(selectedCountry){document.getElementById('total-final').textContent=(booksPrice+shippingPrice).toFixed(2)+' €'}else{document.getElementById('total-final').textContent='—'}}
+function updateShipping(country){if(country)selectedCountry=country;const qty=parseInt(document.getElementById('quantity').value)||1;if(qty>=10){shippingPrice=0;document.getElementById('total-shipping').textContent='ZDARMA';document.getElementById('total-shipping').style.color='var(--color-forest)';document.getElementById('total-shipping').style.fontWeight='bold'}else if(selectedCountry){const prices={'sk':3.40,'cz':4.10,'de':6.90,'at':6.90,'pl':5.50,'hu':5.50,'gb':8.90,'ie':9.90};shippingPrice=prices[selectedCountry.toLowerCase()]||7.90;document.getElementById('total-shipping').textContent=shippingPrice.toFixed(2)+' €';document.getElementById('total-shipping').style.color='';document.getElementById('total-shipping').style.fontWeight=''}updateTotal()}
+function updatePrices(){const qty=parseInt(qtyInput.value)||1,discount=getDiscount(qty),subtotal=qty*UNIT_PRICE,discountAmount=subtotal*(discount/100),finalBooks=subtotal-discountAmount;document.getElementById('unit-price').textContent=UNIT_PRICE.toFixed(2)+' €';document.getElementById('subtotal').textContent=finalBooks.toFixed(2)+' €';document.getElementById('total-books').textContent=finalBooks.toFixed(2)+' €';const discountRow=document.getElementById('discount-row');if(discount>0){discountRow.classList.remove('hidden');document.getElementById('discount-percent').textContent='('+discount+'%)';document.getElementById('discount-amount').textContent='−'+discountAmount.toFixed(2)+' €'}else{discountRow.classList.add('hidden')}if(selectedCountry)updateShipping();else updateTotal()}
 document.getElementById('qty-minus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val>1){qtyInput.value=val-1;updatePrices()}});
 document.getElementById('qty-plus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val<100){qtyInput.value=val+1;updatePrices()}});
 qtyInput?.addEventListener('change',()=>{let val=parseInt(qtyInput.value)||1;if(val<1)val=1;if(val>100)val=100;qtyInput.value=val;updatePrices()});
-
-let shippingPrice=0;
-function updateTotal(){const booksText=document.getElementById('total-books').textContent,booksPrice=parseFloat(booksText.replace(' €','').replace(',','.'));if(shippingPrice>0){document.getElementById('total-final').textContent=(booksPrice+shippingPrice).toFixed(2)+' €'}else{document.getElementById('total-final').textContent='—'}}
-function updateShipping(country){const prices={'sk':3.40,'cz':4.10,'de':6.90,'at':6.90,'pl':5.50,'hu':5.50,'gb':8.90,'ie':9.90};shippingPrice=prices[country.toLowerCase()]||7.90;document.getElementById('total-shipping').textContent=shippingPrice.toFixed(2)+' €';updateTotal()}
 
 const packetaApiKey='4d7f960a836e9a3ddb03aebdeb2978e3';
 function openPacketa(){
