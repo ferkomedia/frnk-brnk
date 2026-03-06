@@ -44,10 +44,8 @@ const {
   <link rel="apple-touch-icon" href="/icon-192.png" />
   
   <!-- ===== PRELOAD CRITICAL RESOURCES (Core Web Vitals - LCP) ===== -->
-  <link rel="preload" as="image" href="/book-pages/page-1.webp" type="image/webp" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preload" as="image" href="/book-pages/page-1.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://widget.packeta.com" />
   <link rel="preconnect" href="https://js.stripe.com" />
   
   <!-- ===== FONTS (with display=swap for CLS) ===== -->
@@ -267,6 +265,8 @@ const {
   </style>
 </head>
 <body>
-  <slot />
+  <main>
+    <slot />
+  </main>
 </body>
 </html>

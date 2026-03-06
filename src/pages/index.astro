@@ -27,11 +27,11 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
     <div class="hero-book">
       <div class="book-frame">
         <div class="book-pages" id="book-carousel">
-          {bookPages.map((src, i) => (<img src={src} alt={`Ukážka ${i + 1}`} class={`page ${i === 0 ? 'active' : ''}`} data-index={i} />))}
+          {bookPages.map((src, i) => (<img src={src} alt={`Ukážka ${i + 1}`} class={`page ${i === 0 ? 'active' : ''}`} data-index={i} width="420" height="594" loading={i === 0 ? 'eager' : 'lazy'} />))}
         </div>
       </div>
-      <div class="page-dots">
-        {bookPages.map((_, i) => (<button class={`dot ${i === 0 ? 'active' : ''}`} data-index={i} />))}
+      <div class="page-dots" role="tablist" aria-label="Stránky knihy">
+        {bookPages.map((_, i) => (<button class={`dot ${i === 0 ? 'active' : ''}`} data-index={i} role="tab" aria-label={`Stránka ${i + 1}`} aria-selected={i === 0 ? 'true' : 'false'} />))}
       </div>
     </div>
     <div class="hero-text">
@@ -55,7 +55,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
     <h2>Doručíme knihu kamkoľvek v Európe</h2>
     <p>Pre Slovákov žijúcich v zahraničí — pošlite deťom alebo vnúčatám kúsok domova</p>
     <div class="countries">
-      <span>Veľká Británia</span><span>Nemecko</span><span>Rakúsko</span><span>Česko</span><span>Írsko</span><span>a ďalších 22 krajín</span>
+      <span>Veľká Británia</span><span>Nemecko</span><span>Rakúsko</span><span>Česko</span><span>Írsko</span><span>a ďalších 25+ krajín</span>
     </div>
   </div>
 </section>
@@ -91,7 +91,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 
 <section class="author" id="autor">
   <div class="author-inner">
-    <div class="author-photo"><img src="/author.webp" alt="Viliam Hriadel" /></div>
+    <div class="author-photo"><img src="/author.webp" alt="Viliam Hriadel" width="350" height="469" loading="lazy" /></div>
     <div class="author-text">
       <p class="author-label">Autor a ilustrátor</p>
       <h2>Viliam Hriadel</h2>
@@ -109,7 +109,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
     <div class="order-grid">
       <div class="order-left">
         <div class="product-card">
-          <img src="/book-pages/page-1.webp" alt="Obálka knihy" class="product-img" loading="eager" fetchpriority="high" />
+          <img src="/book-pages/page-1.webp" alt="Obálka knihy" class="product-img" width="300" height="420" loading="eager" fetchpriority="high" />
           <div class="product-info">
             <h3>Frnk brnk do sveta</h3>
             <p>Viliam Hriadel</p>
@@ -130,11 +130,11 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
       <div class="order-right">
         <form id="order-form" class="form">
           <div class="form-group">
-            <label>Počet kusov</label>
+            <label for="quantity">Počet kusov</label>
             <div class="qty-selector">
-              <button type="button" class="qty-btn" id="qty-minus">−</button>
-              <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" />
-              <button type="button" class="qty-btn" id="qty-plus">+</button>
+              <button type="button" class="qty-btn" id="qty-minus" aria-label="Znížiť počet">−</button>
+              <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" aria-label="Počet kusov" />
+              <button type="button" class="qty-btn" id="qty-plus" aria-label="Zvýšiť počet">+</button>
             </div>
           </div>
           <div class="price-calc">
@@ -154,8 +154,8 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
             <h4>Doručenie cez Packeta</h4>
             <p class="field-note">Vyberte krajinu doručenia</p>
             <div class="form-group">
-              <label>Krajina doručenia</label>
-              <select id="delivery-country" class="form-select">
+              <label for="delivery-country">Krajina doručenia</label>
+              <select id="delivery-country" class="form-select" aria-label="Krajina doručenia">
                 <option value="">— Vyberte krajinu —</option>
                 <optgroup label="Výdajné miesta Packeta">
                   <option value="sk" data-type="pickup">🇸🇰 Slovensko</option>
@@ -259,8 +259,8 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 <section class="trust">
   <div class="trust-inner">
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Bezpečná platba</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Doručenie 2–7 dní</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Do 27 krajín Európy</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Doručenie 2–5 dní</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>30+ krajín Európy</span></div>
   </div>
 </section>
 
@@ -374,7 +374,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 .page{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.5s ease-in-out}
 .page.active{opacity:1}
 .page-dots{display:flex;gap:8px}
-.dot{width:10px;height:10px;border-radius:50%;border:none;background:var(--color-border);cursor:pointer;transition:all 0.25s;padding:0}
+.dot{width:24px;height:24px;border-radius:50%;border:none;background:var(--color-border);cursor:pointer;transition:all 0.25s;padding:0}
 .dot:hover{background:var(--color-forest-light);transform:scale(1.2)}
 .dot.active{background:var(--color-forest);width:28px;border-radius:5px}
 .hero-text{padding-right:2rem}
@@ -393,10 +393,10 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 
 .europe-banner{background:var(--color-sky-dark);color:white;padding:4rem 2rem;text-align:center}
 .banner-inner{max-width:800px;margin:0 auto}
-.europe-banner h2{font-size:1.75rem;margin-bottom:0.75rem}
-.europe-banner p{opacity:0.9;margin-bottom:1.5rem}
+.europe-banner h2{font-size:1.75rem;margin-bottom:0.75rem;color:white}
+.europe-banner p{color:rgba(255,255,255,0.95);margin-bottom:1.5rem}
 .countries{display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap}
-.countries span{background:rgba(255,255,255,0.2);padding:0.4rem 1rem;border-radius:8px;font-size:0.9rem;transition:all 0.25s}
+.countries span{background:rgba(255,255,255,0.25);padding:0.4rem 1rem;border-radius:8px;font-size:0.9rem;transition:all 0.25s;color:white}
 .countries span:hover{background:rgba(255,255,255,0.3);transform:translateY(-2px)}
 
 .about{padding:6rem 2rem;position:relative;z-index:1}
@@ -506,12 +506,12 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 
 .footer{background:var(--color-sky-dark);color:white;padding:3rem 2rem;text-align:center;position:relative;z-index:1}
 .footer-inner{max-width:600px;margin:0 auto}
-.footer-brand{font-size:1.25rem;font-weight:700;margin-bottom:0.25rem}
-.footer-pub{opacity:0.7;font-size:0.9rem;margin-bottom:1.5rem}
+.footer-brand{font-size:1.25rem;font-weight:700;margin-bottom:0.25rem;color:white}
+.footer-pub{color:rgba(255,255,255,0.85);font-size:0.9rem;margin-bottom:1.5rem}
 .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:1.5rem;flex-wrap:wrap}
-.footer-links a,.footer-link{font-size:0.9rem;opacity:0.8;transition:opacity 0.25s;background:none;border:none;color:white;font-family:var(--font-main);cursor:pointer}
-.footer-links a:hover,.footer-link:hover{opacity:1}
-.footer-copy{font-size:0.85rem;opacity:0.6}
+.footer-links a,.footer-link{font-size:0.9rem;color:rgba(255,255,255,0.9);transition:color 0.25s;background:none;border:none;font-family:var(--font-main);cursor:pointer}
+.footer-links a:hover,.footer-link:hover{color:white}
+.footer-copy{font-size:0.85rem;color:rgba(255,255,255,0.8)}
 
 .modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem}
 .modal.active{display:flex}
