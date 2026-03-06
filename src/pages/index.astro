@@ -160,17 +160,11 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
                 <optgroup label="Výdajné miesta Packeta">
                   <option value="sk" data-type="pickup">🇸🇰 Slovensko</option>
                   <option value="cz" data-type="pickup">🇨🇿 Česko</option>
-                  <option value="pl" data-type="pickup">🇵🇱 Poľsko</option>
                   <option value="hu" data-type="pickup">🇭🇺 Maďarsko</option>
                   <option value="ro" data-type="pickup">🇷🇴 Rumunsko</option>
-                  <option value="bg" data-type="pickup">🇧🇬 Bulharsko</option>
-                  <option value="hr" data-type="pickup">🇭🇷 Chorvátsko</option>
-                  <option value="si" data-type="pickup">🇸🇮 Slovinsko</option>
-                  <option value="ee" data-type="pickup">🇪🇪 Estónsko</option>
-                  <option value="lv" data-type="pickup">🇱🇻 Lotyšsko</option>
-                  <option value="lt" data-type="pickup">🇱🇹 Litva</option>
                 </optgroup>
                 <optgroup label="Doručenie na adresu">
+                  <option value="pl" data-type="address">🇵🇱 Poľsko</option>
                   <option value="de" data-type="address">🇩🇪 Nemecko</option>
                   <option value="at" data-type="address">🇦🇹 Rakúsko</option>
                   <option value="gb" data-type="address">🇬🇧 Veľká Británia</option>
@@ -187,6 +181,12 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
                   <option value="fi" data-type="address">🇫🇮 Fínsko</option>
                   <option value="gr" data-type="address">🇬🇷 Grécko</option>
                   <option value="lu" data-type="address">🇱🇺 Luxembursko</option>
+                  <option value="bg" data-type="address">🇧🇬 Bulharsko</option>
+                  <option value="hr" data-type="address">🇭🇷 Chorvátsko</option>
+                  <option value="si" data-type="address">🇸🇮 Slovinsko</option>
+                  <option value="ee" data-type="address">🇪🇪 Estónsko</option>
+                  <option value="lv" data-type="address">🇱🇻 Lotyšsko</option>
+                  <option value="lt" data-type="address">🇱🇹 Litva</option>
                 </optgroup>
               </select>
             </div>
@@ -249,7 +249,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
             <div class="total-row final"><span>Celkom</span><span id="total-final">—</span></div>
           </div>
           <button type="submit" id="submit-btn" class="submit-btn" disabled>Dokončiť objednávku</button>
-          <p class="secure-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Vaše údaje sú v bezpečí</p>
+          <p class="secure-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Bezpečná platba.</p>
         </form>
       </div>
     </div>
@@ -259,7 +259,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 <section class="trust">
   <div class="trust-inner">
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Bezpečná platba</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Doručenie 2–7 dní</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Doručenie 2–5 dní</span></div>
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Do 27 krajín Európy</span></div>
   </div>
 </section>
@@ -273,7 +273,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
       <button type="button" class="footer-link" data-modal="privacy">Ochrana osobných údajov</button>
       <a href="mailto:info@frnk-brnk.sk">Kontakt</a>
     </div>
-    <p class="footer-copy">© 2025 FerkoMedia. Všetky práva vyhradené.</p>
+    <p class="footer-copy">© 2026 FerkoMedia. Všetky práva vyhradené.</p>
   </div>
 </footer>
 
@@ -589,22 +589,8 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 
 <script define:vars={{ discounts }}>
 document.addEventListener('DOMContentLoaded',()=>{
-// ===== GA4 E-COMMERCE TRACKING =====
-// view_item - sleduje zobrazenie produktu
-if(typeof gtag !== 'undefined') {
-  gtag('event', 'view_item', {
-    currency: 'EUR',
-    value: 11.99,
-    items: [{
-      item_id: 'frnk-brnk-kniha',
-      item_name: 'Frnk brnk do sveta',
-      item_brand: 'FerkoMedia',
-      item_category: 'Detské knihy',
-      price: 11.99,
-      quantity: 1
-    }]
-  });
-}
+// GA4 view_item
+if(typeof gtag!=='undefined'){gtag('event','view_item',{currency:'EUR',value:11.99,items:[{item_id:'frnk-brnk-kniha',item_name:'Frnk brnk do sveta',price:11.99,quantity:1}]});}
 
 const pages=document.querySelectorAll('.page'),dots=document.querySelectorAll('.dot');
 let currentPage=0,autoPlay;
@@ -624,30 +610,9 @@ function getDiscount(qty){for(let i=discounts.length-1;i>=0;i--)if(qty>=discount
 function updateTotal(){const booksText=document.getElementById('total-books').textContent,booksPrice=parseFloat(booksText.replace(' €','').replace(',','.'));if(selectedCountry){document.getElementById('total-final').textContent=(booksPrice+shippingPrice).toFixed(2)+' €'}else{document.getElementById('total-final').textContent='—'}}
 function updateShipping(country){if(country)selectedCountry=country;const qty=parseInt(document.getElementById('quantity').value)||1;if(qty>=10){shippingPrice=0;document.getElementById('total-shipping').textContent='ZDARMA';document.getElementById('total-shipping').style.color='var(--color-forest)';document.getElementById('total-shipping').style.fontWeight='bold'}else if(selectedCountry){const prices={'sk':3.40,'cz':4.10,'de':6.90,'at':6.90,'pl':5.50,'hu':5.50,'gb':8.90,'ie':9.90,'nl':7.90,'be':7.90,'fr':8.90,'it':8.90,'es':9.90,'pt':9.90,'ch':9.90,'ro':6.90,'bg':6.90,'hr':5.90,'si':5.90,'se':9.90,'dk':8.90,'fi':9.90,'ee':6.90,'lv':6.90,'lt':6.90,'gr':9.90,'cy':12.90,'mt':12.90,'lu':7.90,'rs':7.90};shippingPrice=prices[selectedCountry.toLowerCase()]||9.90;document.getElementById('total-shipping').textContent=shippingPrice.toFixed(2)+' €';document.getElementById('total-shipping').style.color='';document.getElementById('total-shipping').style.fontWeight=''}updateTotal()}
 function updatePrices(){const qty=parseInt(qtyInput.value)||1,discount=getDiscount(qty),subtotal=qty*UNIT_PRICE,discountAmount=subtotal*(discount/100),finalBooks=subtotal-discountAmount;document.getElementById('unit-price').textContent=UNIT_PRICE.toFixed(2)+' €';document.getElementById('subtotal').textContent=finalBooks.toFixed(2)+' €';document.getElementById('total-books').textContent=finalBooks.toFixed(2)+' €';const discountRow=document.getElementById('discount-row');if(discount>0){discountRow.classList.remove('hidden');document.getElementById('discount-percent').textContent='('+discount+'%)';document.getElementById('discount-amount').textContent='−'+discountAmount.toFixed(2)+' €'}else{discountRow.classList.add('hidden')}if(selectedCountry)updateShipping();else updateTotal()}
-document.getElementById('qty-minus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val>1){qtyInput.value=val-1;updatePrices();trackAddToCart(val-1)}});
-document.getElementById('qty-plus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val<100){qtyInput.value=val+1;updatePrices();trackAddToCart(val+1)}});
-qtyInput?.addEventListener('change',()=>{let val=parseInt(qtyInput.value)||1;if(val<1)val=1;if(val>100)val=100;qtyInput.value=val;updatePrices();trackAddToCart(val)});
-
-// GA4 add_to_cart tracking
-function trackAddToCart(qty) {
-  if(typeof gtag !== 'undefined') {
-    const discount=getDiscount(qty);
-    const unitPrice=UNIT_PRICE*(1-discount/100);
-    gtag('event', 'add_to_cart', {
-      currency: 'EUR',
-      value: unitPrice * qty,
-      items: [{
-        item_id: 'frnk-brnk-kniha',
-        item_name: 'Frnk brnk do sveta',
-        item_brand: 'FerkoMedia',
-        item_category: 'Detské knihy',
-        price: unitPrice,
-        quantity: qty,
-        discount: discount > 0 ? (UNIT_PRICE * discount / 100) : 0
-      }]
-    });
-  }
-}
+document.getElementById('qty-minus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val>1){qtyInput.value=val-1;updatePrices();if(typeof gtag!=='undefined'){const q=val-1,d=getDiscount(q),p=UNIT_PRICE*(1-d/100);gtag('event','add_to_cart',{currency:'EUR',value:p*q,items:[{item_id:'frnk-brnk-kniha',item_name:'Frnk brnk do sveta',price:p,quantity:q}]});}}});
+document.getElementById('qty-plus')?.addEventListener('click',()=>{const val=parseInt(qtyInput.value)||1;if(val<100){qtyInput.value=val+1;updatePrices();if(typeof gtag!=='undefined'){const q=val+1,d=getDiscount(q),p=UNIT_PRICE*(1-d/100);gtag('event','add_to_cart',{currency:'EUR',value:p*q,items:[{item_id:'frnk-brnk-kniha',item_name:'Frnk brnk do sveta',price:p,quantity:q}]});}}});
+qtyInput?.addEventListener('change',()=>{let val=parseInt(qtyInput.value)||1;if(val<1)val=1;if(val>100)val=100;qtyInput.value=val;updatePrices();if(typeof gtag!=='undefined'){const d=getDiscount(val),p=UNIT_PRICE*(1-d/100);gtag('event','add_to_cart',{currency:'EUR',value:p*val,items:[{item_id:'frnk-brnk-kniha',item_name:'Frnk brnk do sveta',price:p,quantity:val}]});}});
 
 const packetaApiKey='4d7f960a836e9a3ddb03aebdeb2978e3';
 const countrySelect=document.getElementById('delivery-country');
@@ -751,34 +716,18 @@ document.getElementById('order-form')?.addEventListener('submit',async(e)=>{
   btn.disabled=true;
   btn.textContent='Spracovávam platbu...';
   
+  // GA4 begin_checkout
+  const checkoutQty=parseInt(document.getElementById('quantity').value)||1;
+  const checkoutTotal=parseFloat(document.getElementById('total-final').textContent.replace(' €','').replace(',','.'));
+  if(typeof gtag!=='undefined'){gtag('event','begin_checkout',{currency:'EUR',value:checkoutTotal,items:[{item_id:'frnk-brnk-kniha',item_name:'Frnk brnk do sveta',price:11.99,quantity:checkoutQty}]});}
+  
   try{
     const deliveryType=document.getElementById('delivery-type').value;
-    const qty=parseInt(document.getElementById('quantity').value)||1;
-    const discount=getDiscount(qty);
-    const unitPrice=UNIT_PRICE*(1-discount/100);
-    const totalValue=parseFloat(document.getElementById('total-final').textContent.replace(' €','').replace(',','.'));
-    
-    // GA4 begin_checkout
-    if(typeof gtag !== 'undefined') {
-      gtag('event', 'begin_checkout', {
-        currency: 'EUR',
-        value: totalValue,
-        items: [{
-          item_id: 'frnk-brnk-kniha',
-          item_name: 'Frnk brnk do sveta',
-          item_brand: 'FerkoMedia',
-          item_category: 'Detské knihy',
-          price: unitPrice,
-          quantity: qty
-        }]
-      });
-    }
-    
     const formData={
       name:document.getElementById('name').value,
       email:document.getElementById('email').value,
       phone:document.getElementById('phone').value,
-      quantity:qty,
+      quantity:checkoutQty,
       delivery_type:deliveryType,
       delivery_country:document.getElementById('delivery-country').value,
       packeta_point_id:deliveryType==='pickup'?document.getElementById('packeta-point-id').value:'',
@@ -787,7 +736,7 @@ document.getElementById('order-form')?.addEventListener('submit',async(e)=>{
       address_zip:deliveryType==='address'?document.getElementById('address-zip').value:'',
       address_city:deliveryType==='address'?document.getElementById('address-city').value:'',
       shipping_price:shippingPrice,
-      total:totalValue
+      total:parseFloat(document.getElementById('total-final').textContent.replace(' €','').replace(',','.'))
     };
     
     // 1. Vytvorenie PaymentIntent na serveri
