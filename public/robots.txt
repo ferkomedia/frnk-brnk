@@ -1,0 +1,31 @@
+# robots.txt pre frnk-brnk.sk
+# Generované: Marec 2026
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://frnk-brnk.sk/sitemap.xml
+
+# Blokovať prístup k API endpointom
+Disallow: /api/
+
+# Povoliť všetky vyhľadávače
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI vyhľadávače
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /

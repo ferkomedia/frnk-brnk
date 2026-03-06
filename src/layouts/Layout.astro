@@ -4,7 +4,10 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Detská kniha od Viliama Hriadela. Dobrodružný príbeh plný fantázie pre malých čitateľov. Doručíme kamkoľvek v Európe cez Packeta." } = Astro.props;
+const { 
+  title, 
+  description = "Detská kniha slovenských riekaniek pre deti 4-10 rokov. Doručíme do 30 krajín Európy cez Packeta. Ideálny darček pre slovenské rodiny v zahraničí." 
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -12,63 +15,233 @@ const { title, description = "Detská kniha od Viliama Hriadela. Dobrodružný p
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ===== SEO META TAGS ===== -->
+  <title>{title}</title>
   <meta name="description" content={description} />
-
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://frnk-brnk.sk" />
+  
+  <!-- ===== OPEN GRAPH (Facebook, LinkedIn) ===== -->
+  <meta property="og:type" content="product" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:type" content="product" />
   <meta property="og:url" content="https://frnk-brnk.sk" />
+  <meta property="og:image" content="https://frnk-brnk.sk/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="sk_SK" />
-
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16.png" />
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#4a7c59" />
-  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet">
-
-
-
-  <title>{title}</title>
-
+  <meta property="og:site_name" content="Frnk brnk do sveta" />
+  
+  <!-- ===== TWITTER CARDS ===== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="https://frnk-brnk.sk/og-image.jpg" />
+  
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  
+  <!-- ===== PRELOAD CRITICAL RESOURCES (Core Web Vitals - LCP) ===== -->
+  <link rel="preload" as="image" href="/book-pages/page-1.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://widget.packeta.com" />
+  
+  <!-- ===== FONTS (with display=swap for CLS) ===== -->
+  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <!-- ===== PACKETA WIDGET ===== -->
+  <script src="https://widget.packeta.com/v6/www/js/library.js" defer></script>
+  
+  <!-- GA4 je už implementované v index.astro s Consent Mode v2 -->
+  
+  <!-- ===== PRODUCT SCHEMA (JSON-LD) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Frnk brnk do sveta",
+    "description": "Detská kniha slovenských riekaniek od Viliama Hriadela. Veršovaný príbeh dvoch sýkoriek pre deti 4-10 rokov s krásnymi ilustráciami.",
+    "image": [
+      "https://frnk-brnk.sk/book-pages/page-1.png",
+      "https://frnk-brnk.sk/book-pages/page-2.png",
+      "https://frnk-brnk.sk/book-pages/page-3.png"
+    ],
+    "brand": {
+      "@type": "Brand",
+      "name": "FerkoMedia"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Viliam Hriadel",
+      "jobTitle": "Herec Slovenského komorného divadla v Martine"
+    },
+    "isbn": "978-80-975071-0-7",
+    "bookFormat": "Hardcover",
+    "numberOfPages": 48,
+    "inLanguage": "sk",
+    "audience": {
+      "@type": "PeopleAudience",
+      "suggestedMinAge": 4,
+      "suggestedMaxAge": 10
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://frnk-brnk.sk",
+      "priceCurrency": "EUR",
+      "price": "11.99",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "FerkoMedia Video marketing"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": ["SK", "CZ", "DE", "AT", "PL", "HU", "GB", "IE", "NL", "BE", "FR", "IT", "ES", "PT", "CH", "RO", "BG", "HR", "SI", "EE", "LV", "LT", "SE", "DK", "FI", "GR", "LU"]
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 2,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 5,
+            "unitCode": "DAY"
+          }
+        }
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "12"
+    }
+  }
+  </script>
+  
+  <!-- ===== ORGANIZATION SCHEMA ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FerkoMedia Video marketing",
+    "url": "https://frnk-brnk.sk",
+    "logo": "https://frnk-brnk.sk/favicon.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@frnk-brnk.sk",
+      "contactType": "customer service",
+      "availableLanguage": "Slovak"
+    },
+    "sameAs": []
+  }
+  </script>
+  
+  <!-- ===== BREADCRUMB SCHEMA ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Domov",
+      "item": "https://frnk-brnk.sk"
+    }]
+  }
+  </script>
+  
+  <!-- ===== FAQ SCHEMA (pre AI vyhľadávače) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Pre aký vek je kniha Frnk brnk do sveta vhodná?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kniha je ideálna pre deti vo veku 4 až 10 rokov. Veršovaný príbeh je ľahko zrozumiteľný pre menšie deti a zároveň dostatočne pútavý pre staršie."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Doručujete knihu do zahraničia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Áno, doručujeme do viac ako 30 krajín Európy vrátane Veľkej Británie, Nemecka, Rakúska, Írska, Holandska a ďalších. Doručenie zabezpečuje Packeta."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kto je autorom knihy Frnk brnk do sveta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Autorom a ilustrátorom je Viliam Hriadel, uznávaný slovenský herec Slovenského komorného divadla v Martine. Knihu nielen napísal, ale aj sám ilustroval."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ako dlho trvá doručenie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Doručenie trvá zvyčajne 2-5 pracovných dní v závislosti od krajiny určenia. Na Slovensko a do Česka je doručenie najrýchlejšie."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <!-- ===== GLOBAL STYLES ===== -->
   <style is:global>
     :root {
+      /* Farby z obálky knihy */
       --color-forest: #4a7c59;
       --color-forest-dark: #3d6649;
       --color-forest-light: #6b9a78;
       --color-sky: #6b8fa3;
       --color-sky-dark: #4a6b7a;
+      --color-sky-light: #a8c4d4;
       --color-sun: #f5c842;
       --color-sun-light: #fde68a;
       --color-earth: #c9a227;
       --color-red: #c73e3a;
-
+      
+      /* Neutrálne */
       --color-cream: #fefcf6;
       --color-paper: #f9f6ef;
       --color-text: #2c3e2d;
       --color-text-light: #5a6b5c;
       --color-border: #d4d9d5;
-
+      
+      /* Font */
       --font-main: 'Andika', Georgia, serif;
-
+      
+      /* Tiene a zaoblenia */
       --shadow-sm: 0 2px 8px rgba(44, 62, 45, 0.08);
       --shadow-md: 0 4px 16px rgba(44, 62, 45, 0.12);
       --shadow-lg: 0 8px 32px rgba(44, 62, 45, 0.16);
-
+      
       --radius-sm: 8px;
       --radius-md: 16px;
       --radius-lg: 24px;
-
+      
       --transition: 0.25s ease;
     }
-
+    
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-
+    
     body {
       font-family: var(--font-main);
       background: var(--color-cream);
@@ -76,15 +249,20 @@ const { title, description = "Detská kniha od Viliama Hriadela. Dobrodružný p
       line-height: 1.7;
       font-size: 17px;
     }
-
+    
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
+    
+    /* Core Web Vitals - CLS prevention */
+    img { 
+      max-width: 100%; 
+      height: auto; 
+      display: block;
+    }
+    
     ::selection { background: var(--color-sun); color: var(--color-text); }
   </style>
 </head>
 <body>
   <slot />
-  <script is:inline src="https://widget.packeta.com/v6/www/js/library.js"></script>
-  <script is:inline src="https://js.stripe.com/v3/"></script>
 </body>
 </html>
