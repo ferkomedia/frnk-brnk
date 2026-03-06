@@ -21,8 +21,8 @@ export async function onRequestPost(context) {
     sun: '#f5c842',
     cream: '#fefcf6',
     paper: '#f9f6ef',
-    text: '#2c3e2d',
-    textLight: '#5a6b5c',
+    text: '#ffffff',
+    textLight: '#cbe0ce',
     border: '#d4d9d5'
   };
 
