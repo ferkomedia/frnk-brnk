@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const bookPages = ['/book-pages/page-1.png','/book-pages/page-2.png','/book-pages/page-3.png','/book-pages/page-4.png','/book-pages/page-5.png','/book-pages/page-6.png','/book-pages/page-7.png'];
+const bookPages = ['/book-pages/page-1.webp','/book-pages/page-2.webp','/book-pages/page-3.webp','/book-pages/page-4.webp','/book-pages/page-5.webp','/book-pages/page-6.webp'];
 const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20},{min:50,discount:25}];
 ---
 <Layout title="Frnk brnk do sveta — Detská kniha od Viliama Hriadela">
@@ -109,7 +109,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
     <div class="order-grid">
       <div class="order-left">
         <div class="product-card">
-          <img src="/book-pages/page-1.png" alt="Obálka knihy" class="product-img" />
+          <img src="/book-pages/page-1.webp" alt="Obálka knihy" class="product-img" loading="eager" fetchpriority="high" />
           <div class="product-info">
             <h3>Frnk brnk do sveta</h3>
             <p>Viliam Hriadel</p>
@@ -249,7 +249,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
             <div class="total-row final"><span>Celkom</span><span id="total-final">—</span></div>
           </div>
           <button type="submit" id="submit-btn" class="submit-btn" disabled>Dokončiť objednávku</button>
-          <p class="secure-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Bezpečná platba.</p>
+          <p class="secure-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Vaše údaje sú v bezpečí</p>
         </form>
       </div>
     </div>
@@ -259,7 +259,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
 <section class="trust">
   <div class="trust-inner">
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Bezpečná platba</span></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Doručenie 2–5 dní</span></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Doručenie 2–7 dní</span></div>
     <div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Do 27 krajín Európy</span></div>
   </div>
 </section>
@@ -273,7 +273,7 @@ const discounts = [{min:10,discount:10},{min:20,discount:15},{min:30,discount:20
       <button type="button" class="footer-link" data-modal="privacy">Ochrana osobných údajov</button>
       <a href="mailto:info@frnk-brnk.sk">Kontakt</a>
     </div>
-    <p class="footer-copy">© 2026 FerkoMedia. Všetky práva vyhradené.</p>
+    <p class="footer-copy">© 2025 FerkoMedia. Všetky práva vyhradené.</p>
   </div>
 </footer>
 
