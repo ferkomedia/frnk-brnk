@@ -46,16 +46,43 @@ const {
   <!-- ===== PRELOAD CRITICAL RESOURCES (Core Web Vitals - LCP) ===== -->
   <link rel="preload" as="image" href="/book-pages/page-1.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://js.stripe.com" />
   
   <!-- ===== FONTS (with display=swap for CLS) ===== -->
-  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" /></noscript>
   
-  <!-- ===== PACKETA WIDGET ===== -->
-  <script src="https://widget.packeta.com/v6/www/js/library.js" defer></script>
-  
-  <!-- ===== STRIPE ===== -->
-  <script src="https://js.stripe.com/v3/" defer></script>
+  <!-- ===== LAZY LOAD SCRIPTS (Stripe, Packeta, hCaptcha - load on scroll to form) ===== -->
+  <script>
+    (function(){
+      var loaded=false;
+      function loadScripts(){
+        if(loaded)return;
+        loaded=true;
+        // Stripe
+        var s1=document.createElement('script');
+        s1.src='https://js.stripe.com/v3/';
+        document.head.appendChild(s1);
+        // Packeta
+        var s2=document.createElement('script');
+        s2.src='https://widget.packeta.com/v6/www/js/library.js';
+        document.head.appendChild(s2);
+      }
+      // Load on scroll near form or on interaction
+      var form=document.getElementById('objednat');
+      if('IntersectionObserver' in window && form){
+        var obs=new IntersectionObserver(function(e){
+          if(e[0].isIntersecting){loadScripts();obs.disconnect();}
+        },{rootMargin:'200px'});
+        obs.observe(form);
+      }
+      // Fallback - load on any interaction
+      ['scroll','click','touchstart','mousemove'].forEach(function(e){
+        window.addEventListener(e,loadScripts,{once:true,passive:true});
+      });
+      // Fallback - load after 3s
+      setTimeout(loadScripts,3000);
+    })();
+  </script>
   
   <!-- GA4 je už implementované v index.astro s Consent Mode v2 -->
   
