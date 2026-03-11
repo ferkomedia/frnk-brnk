@@ -1,661 +1,671 @@
 ---
-// Upsell page - Podpísaná kniha od autora (+3€)
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Špeciálna ponuka: Podpísaná kniha od autora | Frnk brnk do sveta</title>
-  <meta name="description" content="Získajte podpísanú knihu priamo od autora Viliama Hriadela. Limitovaná ponuka len na 5 minút." />
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" />
+<Layout
+  title="Špeciálna ponuka: Podpísaná kniha od autora | Frnk brnk do sveta"
+  description="Získajte podpísanú knihu priamo od autora Viliama Hriadela. Limitovaná ponuka."
+  noindex={true}
+>
 
-  <!-- GA4 -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MDJY0G420X');
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDJY0G420X"></script>
-</head>
-<body>
-  <div class="page-wrapper">
-    <!-- Progress Bar -->
-    <div class="progress-bar">
-      <div class="progress-step completed">
-        <span class="step-num">1</span>
-        <span class="step-label">Email</span>
-      </div>
-      <div class="progress-line completed"></div>
-      <div class="progress-step active">
-        <span class="step-num">2</span>
-        <span class="step-label">Ponuka</span>
-      </div>
-      <div class="progress-line"></div>
-      <div class="progress-step">
-        <span class="step-num">3</span>
-        <span class="step-label">Platba</span>
-      </div>
+<div class="page-wrapper">
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress-step completed">
+      <span class="step-num">1</span>
+      <span class="step-label">Email</span>
     </div>
-
-    <!-- Countdown Timer -->
-    <div class="countdown-banner">
-      <span class="countdown-icon">⏰</span>
-      <span>Táto ponuka vyprší za: </span>
-      <span id="countdown" class="countdown-time">05:00</span>
+    <div class="progress-line completed"></div>
+    <div class="progress-step active">
+      <span class="step-num">2</span>
+      <span class="step-label">Ponuka</span>
     </div>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="special-badge">✨ EXKLUZÍVNA PONUKA</div>
-      <h1>Chcete <span class="highlight">podpísanú knihu</span> priamo od autora?</h1>
-      <p class="hero-desc">Viliam Hriadel osobne podpíše vašu knihu a pridá venované meno vášho dieťaťa.</p>
-    </section>
-
-    <!-- Offer Comparison -->
-    <section class="offer-section">
-      <div class="offer-card basic">
-        <div class="offer-header">
-          <h3>Klasická kniha</h3>
-          <div class="offer-price">12 €</div>
-        </div>
-        <ul class="offer-features">
-          <li>✓ Kniha Frnk brnk do sveta</li>
-          <li>✓ Doručenie cez Packeta</li>
-          <li class="faded">✗ Bez podpisu autora</li>
-          <li class="faded">✗ Bez venovania</li>
-        </ul>
-        <a href="/#objednat" class="offer-btn basic-btn">Pokračovať bez podpisu</a>
-      </div>
-
-      <div class="offer-card premium">
-        <div class="best-value">Najobľúbenejšia voľba</div>
-        <div class="offer-header">
-          <h3>Podpísaná kniha</h3>
-          <div class="offer-price">
-            <span class="price-old">15 €</span>
-            <span class="price-new">15 €</span>
-          </div>
-          <div class="price-note">len +3 € navyše</div>
-        </div>
-        <ul class="offer-features">
-          <li>✓ Kniha Frnk brnk do sveta</li>
-          <li>✓ Doručenie cez Packeta</li>
-          <li class="highlight-feature">✓ Osobný podpis autora</li>
-          <li class="highlight-feature">✓ Venované meno dieťaťa</li>
-          <li class="bonus">🎁 BONUS: Audio ukážka</li>
-        </ul>
-        <a href="/#objednat?signed=true" class="offer-btn premium-btn" id="upsell-btn">
-          <span>Chcem podpísanú knihu</span>
-          <span class="btn-arrow">→</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Author Section -->
-    <section class="author-section">
-      <img src="/author.webp" alt="Viliam Hriadel" class="author-img" width="120" height="120" />
-      <blockquote>"Každú knihu podpisujem osobne a s láskou. Je to môj spôsob, ako sa vám poďakovať."</blockquote>
-      <p class="author-name">— Viliam Hriadel, autor</p>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="reviews">
-      <h3>Čo hovoria rodičia</h3>
-      <div class="review-grid">
-        <div class="review">
-          <div class="review-stars">★★★★★</div>
-          <p>"Syn bol nadšený, keď videl svoje meno v knihe!"</p>
-          <span class="reviewer">Martin K.</span>
-        </div>
-        <div class="review">
-          <div class="review-stars">★★★★★</div>
-          <p>"Podpísaná kniha sa stala najcennejším darčekom."</p>
-          <span class="reviewer">Zuzana M.</span>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Exit Intent Popup -->
-  <div id="exit-popup" class="popup-overlay">
-    <div class="popup-content">
-      <button class="popup-close" aria-label="Zavrieť">&times;</button>
-      <div class="popup-icon">🎁</div>
-      <h2>Počkajte!</h2>
-      <p>Naozaj chcete prísť o <strong>podpísanú knihu</strong> za len 3€ navyše?</p>
-      <p class="popup-highlight">Táto ponuka už nebude dostupná.</p>
-      <div class="popup-buttons">
-        <a href="/#objednat?signed=true" class="popup-btn primary">Áno, chcem podpísanú!</a>
-        <a href="/#objednat" class="popup-btn secondary">Nie, ďakujem</a>
-      </div>
+    <div class="progress-line"></div>
+    <div class="progress-step">
+      <span class="step-num">3</span>
+      <span class="step-label">Platba</span>
     </div>
   </div>
 
-  <style>
-    :root {
-      --color-forest: #2C3E2D;
-      --color-sky: #87CEEB;
-      --color-sky-dark: #5BA4C9;
-      --color-sun: #FFD93D;
-      --color-cream: #FFF8E7;
-      --color-coral: #FF6B6B;
-      --color-green: #4CAF50;
-      --font-main: 'Andika', sans-serif;
-    }
+  <!-- Countdown Timer -->
+  <div class="countdown-banner">
+    <svg class="countdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>Táto ponuka vyprší za: </span>
+    <span id="countdown" class="countdown-time">05:00</span>
+  </div>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  <!-- Hero -->
+  <section class="hero">
+    <div class="special-badge">EXKLUZÍVNA PONUKA</div>
+    <h1>Chcete <span class="highlight">podpísanú knihu</span> priamo od autora?</h1>
+    <p class="hero-desc">Viliam Hriadel osobne podpíše vašu knihu a pridá venované meno vášho dieťaťa.</p>
+  </section>
 
-    body {
-      font-family: var(--font-main);
-      background: linear-gradient(180deg, #f8f9fa 0%, white 100%);
-      min-height: 100vh;
-      color: var(--color-forest);
-    }
+  <!-- Offer Comparison -->
+  <section class="offer-section">
+    <div class="offer-card basic">
+      <div class="offer-header">
+        <h3>Klasická kniha</h3>
+        <div class="offer-price">12 €</div>
+      </div>
+      <ul class="offer-features">
+        <li class="included">Kniha Frnk brnk do sveta</li>
+        <li class="included">Doručenie cez Packeta</li>
+        <li class="faded">Bez podpisu autora</li>
+        <li class="faded">Bez venovania</li>
+      </ul>
+      <a href="/#objednat" class="offer-btn basic-btn">Pokračovať bez podpisu</a>
+    </div>
 
-    .page-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 1.5rem 1.5rem 3rem;
-    }
+    <div class="offer-card premium">
+      <div class="best-value">Najobľúbenejšia voľba</div>
+      <div class="offer-header">
+        <h3>Podpísaná kniha</h3>
+        <div class="offer-price">
+          <span class="price-old">15 €</span>
+          <span class="price-new">15 €</span>
+        </div>
+        <div class="price-note">len +3 € navyše</div>
+      </div>
+      <ul class="offer-features">
+        <li class="included">Kniha Frnk brnk do sveta</li>
+        <li class="included">Doručenie cez Packeta</li>
+        <li class="highlight-feature">Osobný podpis autora</li>
+        <li class="highlight-feature">Venované meno dieťaťa</li>
+        <li class="bonus">BONUS: Audio ukážka</li>
+      </ul>
+      <a href="/#objednat?signed=true" class="offer-btn premium-btn" id="upsell-btn">
+        <span>Chcem podpísanú knihu</span>
+        <span class="btn-arrow">→</span>
+      </a>
+    </div>
+  </section>
 
-    /* Progress Bar */
-    .progress-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      margin-bottom: 1.5rem;
-    }
+  <!-- Author Section -->
+  <section class="author-section">
+    <img src="/author.webp" alt="Viliam Hriadel - autor knihy Frnk brnk do sveta" class="author-img" width="120" height="120" loading="lazy" />
+    <blockquote>"Každú knihu podpisujem osobne a s láskou. Je to môj spôsob, ako sa vám poďakovať."</blockquote>
+    <p class="author-name">— Viliam Hriadel, autor</p>
+  </section>
 
-    .progress-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
-    }
+  <!-- Social Proof -->
+  <section class="reviews">
+    <h3>Čo hovoria rodičia</h3>
+    <div class="review-grid">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>"Syn bol nadšený, keď videl svoje meno v knihe!"</p>
+        <span class="reviewer">Martin K.</span>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p>"Podpísaná kniha sa stala najcennejším darčekom."</p>
+        <span class="reviewer">Zuzana M.</span>
+      </div>
+    </div>
+  </section>
+</div>
 
-    .step-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #e0e0e0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #888;
-    }
+<!-- Exit Intent Popup -->
+<div id="exit-popup" class="popup-overlay">
+  <div class="popup-content">
+    <button class="popup-close" aria-label="Zavrieť">&times;</button>
+    <div class="popup-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+    </div>
+    <h2>Počkajte!</h2>
+    <p>Naozaj chcete prísť o <strong>podpísanú knihu</strong> za len 3€ navyše?</p>
+    <p class="popup-highlight">Táto ponuka už nebude dostupná.</p>
+    <div class="popup-buttons">
+      <a href="/#objednat?signed=true" class="popup-btn primary">Áno, chcem podpísanú!</a>
+      <a href="/#objednat" class="popup-btn secondary">Nie, ďakujem</a>
+    </div>
+  </div>
+</div>
 
-    .progress-step.completed .step-num {
-      background: var(--color-green);
-      color: white;
-    }
+</Layout>
 
-    .progress-step.active .step-num {
-      background: var(--color-sky-dark);
-      color: white;
-    }
+<style>
+  .page-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 3rem;
+  }
 
-    .step-label {
-      font-size: 0.75rem;
-      color: #888;
-    }
+  /* Progress Bar */
+  .progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 1.5rem;
+  }
 
-    .progress-line {
-      width: 60px;
-      height: 3px;
-      background: #e0e0e0;
-      margin: 0 0.5rem;
-      margin-bottom: 1.25rem;
-    }
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
 
-    .progress-line.completed {
-      background: var(--color-green);
-    }
+  .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
 
-    /* Countdown */
-    .countdown-banner {
-      background: linear-gradient(135deg, var(--color-coral) 0%, #ff8a7a 100%);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
+  .progress-step.completed .step-num {
+    background: var(--color-forest);
+    color: white;
+  }
 
-    .countdown-icon {
-      font-size: 1.2rem;
-    }
+  .progress-step.active .step-num {
+    background: var(--color-sky-dark);
+    color: white;
+  }
 
-    .countdown-time {
-      font-size: 1.25rem;
-      font-weight: 700;
-      background: rgba(255,255,255,0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 6px;
-    }
+  .step-label {
+    font-size: 0.75rem;
+    color: var(--color-text-light);
+  }
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
+  .progress-line {
+    width: 60px;
+    height: 3px;
+    background: var(--color-border);
+    margin: 0 0.5rem;
+    margin-bottom: 1.25rem;
+  }
 
-    .special-badge {
-      display: inline-block;
-      background: var(--color-sun);
-      color: var(--color-forest);
-      padding: 0.5rem 1.25rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-    }
+  .progress-line.completed {
+    background: var(--color-forest);
+  }
 
-    h1 {
-      font-size: 1.75rem;
-      line-height: 1.3;
-      margin-bottom: 0.75rem;
-    }
+  /* Countdown */
+  .countdown-banner {
+    background: linear-gradient(135deg, var(--color-red) 0%, #e85555 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 
-    .highlight {
-      color: var(--color-sky-dark);
-    }
+  .countdown-icon {
+    width: 20px;
+    height: 20px;
+  }
 
-    .hero-desc {
-      color: #666;
-      font-size: 1.05rem;
-      line-height: 1.5;
-    }
+  .countdown-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+  }
 
-    /* Offer Cards */
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .special-badge {
+    display: inline-block;
+    background: var(--color-sun);
+    color: var(--color-text);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .highlight {
+    color: var(--color-sky-dark);
+  }
+
+  .hero-desc {
+    color: var(--color-text-light);
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  /* Offer Cards */
+  .offer-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 600px) {
     .offer-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-bottom: 2rem;
+      grid-template-columns: 1fr;
     }
+  }
 
-    @media (max-width: 600px) {
-      .offer-section {
-        grid-template-columns: 1fr;
-      }
-    }
+  .offer-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 2px solid var(--color-border);
+    position: relative;
+  }
 
-    .offer-card {
-      background: white;
-      border-radius: 20px;
-      padding: 1.5rem;
-      border: 2px solid #e8e8e8;
-      position: relative;
-    }
+  .offer-card.premium {
+    border-color: var(--color-sky-dark);
+    box-shadow: 0 8px 30px rgba(91, 164, 201, 0.2);
+  }
 
-    .offer-card.premium {
-      border-color: var(--color-sky-dark);
-      box-shadow: 0 8px 30px rgba(91, 164, 201, 0.2);
-    }
+  .best-value {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-sky-dark);
+    color: white;
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
 
-    .best-value {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--color-sky-dark);
-      color: white;
-      padding: 0.35rem 1rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
+  .offer-header {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+  }
 
-    .offer-header {
-      text-align: center;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #eee;
-      margin-bottom: 1rem;
-    }
+  .offer-header h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
 
-    .offer-header h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      color: var(--color-forest);
-    }
+  .offer-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
 
-    .offer-price {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--color-forest);
-    }
+  .price-old {
+    text-decoration: line-through;
+    color: var(--color-text-light);
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
 
-    .price-old {
-      text-decoration: line-through;
-      color: #aaa;
-      font-size: 1rem;
-      margin-right: 0.5rem;
-    }
+  .price-new {
+    color: var(--color-red);
+  }
 
-    .price-new {
-      color: var(--color-coral);
-    }
+  .price-note {
+    font-size: 0.85rem;
+    color: var(--color-forest);
+    font-weight: 600;
+  }
 
-    .price-note {
-      font-size: 0.85rem;
-      color: var(--color-green);
-      font-weight: 600;
-    }
+  .offer-features {
+    list-style: none;
+    margin-bottom: 1.25rem;
+  }
 
-    .offer-features {
-      list-style: none;
-      margin-bottom: 1.25rem;
-    }
+  .offer-features li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--color-paper);
+    padding-left: 1.5rem;
+    position: relative;
+  }
 
-    .offer-features li {
-      padding: 0.5rem 0;
-      font-size: 0.9rem;
-      border-bottom: 1px solid #f5f5f5;
-    }
+  .offer-features li.included::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-forest);
+    font-weight: 700;
+  }
 
-    .offer-features li.faded {
-      color: #bbb;
-    }
+  .offer-features li.faded {
+    color: var(--color-text-light);
+  }
 
-    .offer-features li.highlight-feature {
-      color: var(--color-sky-dark);
-      font-weight: 600;
-    }
+  .offer-features li.faded::before {
+    content: "✗";
+    position: absolute;
+    left: 0;
+    color: var(--color-text-light);
+  }
 
-    .offer-features li.bonus {
-      color: var(--color-coral);
-      font-weight: 600;
-      background: rgba(255, 107, 107, 0.1);
-      margin: 0.5rem -0.5rem 0;
-      padding: 0.5rem;
-      border-radius: 8px;
-      border: none;
-    }
+  .offer-features li.highlight-feature {
+    color: var(--color-sky-dark);
+    font-weight: 600;
+  }
 
-    .offer-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      padding: 0.9rem 1rem;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      font-family: var(--font-main);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
+  .offer-features li.highlight-feature::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--color-sky-dark);
+    font-weight: 700;
+  }
 
-    .basic-btn {
-      background: #f0f0f0;
-      color: #666;
-    }
+  .offer-features li.bonus {
+    color: var(--color-red);
+    font-weight: 600;
+    background: rgba(199, 62, 58, 0.1);
+    margin: 0.5rem -0.5rem 0;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    border-radius: 8px;
+    border: none;
+  }
 
-    .basic-btn:hover {
-      background: #e5e5e5;
-    }
+  .offer-features li.bonus::before {
+    content: "+";
+    left: 0.5rem;
+    color: var(--color-red);
+  }
 
-    .premium-btn {
-      background: linear-gradient(135deg, var(--color-coral) 0%, #ff8a7a 100%);
-      color: white;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    }
+  .offer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
 
-    .premium-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 107, 107, 0.5);
-    }
+  .basic-btn {
+    background: var(--color-paper);
+    color: var(--color-text-light);
+  }
 
-    .btn-arrow {
-      font-size: 1.2rem;
-    }
+  .basic-btn:hover {
+    background: var(--color-border);
+  }
 
-    /* Author */
-    .author-section {
-      text-align: center;
-      padding: 2rem;
-      background: var(--color-cream);
-      border-radius: 20px;
-      margin-bottom: 2rem;
-    }
+  .premium-btn {
+    background: linear-gradient(135deg, var(--color-red) 0%, #e85555 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(199, 62, 58, 0.4);
+  }
 
-    .author-img {
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 4px solid white;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
+  .premium-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(199, 62, 58, 0.5);
+  }
 
-    blockquote {
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--color-forest);
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-    }
+  .btn-arrow {
+    font-size: 1.2rem;
+  }
 
-    .author-name {
-      color: #888;
-      font-size: 0.9rem;
-    }
+  /* Author */
+  .author-section {
+    text-align: center;
+    padding: 2rem;
+    background: var(--color-paper);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
 
-    /* Reviews */
-    .reviews {
-      margin-bottom: 2rem;
-    }
+  .author-img {
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 4px solid white;
+    box-shadow: var(--shadow-md);
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
 
-    .reviews h3 {
-      text-align: center;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
+  blockquote {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
 
+  .author-name {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+  }
+
+  /* Reviews */
+  .reviews {
+    margin-bottom: 2rem;
+  }
+
+  .reviews h3 {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 500px) {
     .review-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      grid-template-columns: 1fr;
     }
+  }
 
-    @media (max-width: 500px) {
-      .review-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+  .review {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+  }
 
-    .review {
-      background: white;
-      padding: 1.25rem;
-      border-radius: 16px;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    }
+  .review-stars {
+    color: var(--color-sun);
+    margin-bottom: 0.5rem;
+  }
 
-    .review-stars {
-      color: var(--color-sun);
-      margin-bottom: 0.5rem;
-    }
+  .review p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
 
-    .review p {
-      font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 0.5rem;
-      line-height: 1.4;
-    }
+  .reviewer {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-weight: 600;
+  }
 
-    .reviewer {
-      font-size: 0.85rem;
-      color: #888;
-      font-weight: 600;
-    }
+  /* Exit Popup */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+  }
 
+  .popup-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
 
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
+  .popup-content {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    max-width: 420px;
+    text-align: center;
+    position: relative;
+    animation: slideUp 0.3s ease;
+  }
 
-    /* Exit Popup */
-    .popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.75);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 1rem;
-      backdrop-filter: blur(4px);
-    }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
 
-    .popup-overlay.active {
-      display: flex;
-      animation: fadeIn 0.3s ease;
-    }
+  .popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--color-paper);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    color: var(--color-text-light);
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+  .popup-icon {
+    margin-bottom: 1rem;
+  }
 
-    .popup-content {
-      background: white;
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      max-width: 420px;
-      text-align: center;
-      position: relative;
-      animation: slideUp 0.3s ease;
-    }
+  .popup-icon svg {
+    width: 48px;
+    height: 48px;
+    color: var(--color-sun);
+  }
 
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+  .popup-content h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
 
-    .popup-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 32px;
-      height: 32px;
-      border: none;
-      background: #f0f0f0;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-      color: #666;
-    }
+  .popup-content p {
+    color: var(--color-text-light);
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
 
-    .popup-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+  .popup-highlight {
+    color: var(--color-red) !important;
+    font-weight: 600;
+    margin-bottom: 1.5rem !important;
+  }
 
-    .popup-content h2 {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-      color: var(--color-forest);
-    }
+  .popup-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    .popup-content p {
-      color: #666;
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-    }
+  .popup-btn {
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    text-decoration: none;
+    text-align: center;
+  }
 
-    .popup-highlight {
-      color: var(--color-coral) !important;
-      font-weight: 600;
-      margin-bottom: 1.5rem !important;
-    }
+  .popup-btn.primary {
+    background: var(--color-red);
+    color: white;
+  }
 
-    .popup-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+  .popup-btn.secondary {
+    background: var(--color-paper);
+    color: var(--color-text-light);
+  }
+</style>
 
-    .popup-btn {
-      padding: 1rem;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 700;
-      font-family: var(--font-main);
-      text-decoration: none;
-      text-align: center;
-    }
+<script>
+  // Countdown Timer
+  let timeLeft = 5 * 60; // 5 minutes
+  const countdownEl = document.getElementById('countdown');
 
-    .popup-btn.primary {
-      background: var(--color-coral);
-      color: white;
-    }
-
-    .popup-btn.secondary {
-      background: #f0f0f0;
-      color: #888;
-    }
-  </style>
-
-  <script>
-    // Countdown Timer
-    let timeLeft = 5 * 60; // 5 minutes
-    const countdownEl = document.getElementById('countdown');
-
-    const timer = setInterval(() => {
-      timeLeft--;
-      const mins = Math.floor(timeLeft / 60);
-      const secs = timeLeft % 60;
+  const timer = setInterval(() => {
+    timeLeft--;
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    if (countdownEl) {
       countdownEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
 
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        countdownEl.textContent = 'VYPRŠALO';
-        // Optional: redirect or disable buttons
-      }
-    }, 1000);
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      if (countdownEl) countdownEl.textContent = 'VYPRŠALO';
+    }
+  }, 1000);
 
-    // Exit Intent
-    let exitShown = false;
-    const popup = document.getElementById('exit-popup');
-    const closeBtn = popup.querySelector('.popup-close');
+  // Exit Intent
+  let exitShown = false;
+  const popup = document.getElementById('exit-popup');
+  const closeBtn = popup?.querySelector('.popup-close');
 
-    document.addEventListener('mouseout', (e) => {
-      if (e.clientY < 10 && !exitShown && !sessionStorage.getItem('upsellExitShown')) {
-        popup.classList.add('active');
-        exitShown = true;
-        sessionStorage.setItem('upsellExitShown', 'true');
+  document.addEventListener('mouseout', (e) => {
+    if (e.clientY < 10 && !exitShown && !sessionStorage.getItem('upsellExitShown')) {
+      popup?.classList.add('active');
+      exitShown = true;
+      sessionStorage.setItem('upsellExitShown', 'true');
+      if (typeof gtag !== 'undefined') {
         gtag('event', 'exit_intent_shown', { page: 'upsell' });
       }
-    });
+    }
+  });
 
-    closeBtn.addEventListener('click', () => popup.classList.remove('active'));
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) popup.classList.remove('active');
-    });
+  closeBtn?.addEventListener('click', () => popup?.classList.remove('active'));
+  popup?.addEventListener('click', (e) => {
+    if (e.target === popup) popup.classList.remove('active');
+  });
 
-    // Track upsell clicks
-    document.getElementById('upsell-btn').addEventListener('click', () => {
+  // Track upsell clicks
+  document.getElementById('upsell-btn')?.addEventListener('click', () => {
+    if (typeof gtag !== 'undefined') {
       gtag('event', 'upsell_accepted', {
         item_name: 'Podpisana kniha',
         value: 3
       });
-    });
+    }
+  });
 
-    // Track page view
+  // Track page view
+  if (typeof gtag !== 'undefined') {
     gtag('event', 'page_view', { page_title: 'Upsell - Podpisana kniha' });
-  </script>
-</body>
-</html>
+  }
+</script>

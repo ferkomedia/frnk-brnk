@@ -2,12 +2,21 @@
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
 }
 
-const { 
-  title, 
-  description = "Detská kniha slovenských riekaniek pre deti 4-10 rokov. Doručíme do 30 krajín Európy cez Packeta. Ideálny darček pre slovenské rodiny v zahraničí." 
+const {
+  title,
+  description = "Detská kniha slovenských riekaniek pre deti 4-10 rokov. Doručíme do 30 krajín Európy cez Packeta. Ideálny darček pre slovenské rodiny v zahraničí.",
+  ogImage = "https://frnk-brnk.sk/og-image.jpg",
+  canonicalUrl,
+  noindex = false
 } = Astro.props;
+
+// Dynamický canonical - použije sa prop alebo aktuálna URL
+const canonical = canonicalUrl || new URL(Astro.url.pathname, "https://frnk-brnk.sk").href;
 ---
 
 <!DOCTYPE html>
@@ -15,42 +24,47 @@ const {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- ===== SEO META TAGS ===== -->
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://frnk-brnk.sk" />
-  
+  <meta name="author" content="Viliam Hriadel" />
+  {noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta name="robots" content="index, follow" />
+  )}
+  <link rel="canonical" href={canonical} />
+
   <!-- ===== OPEN GRAPH (Facebook, LinkedIn) ===== -->
   <meta property="og:type" content="product" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:url" content="https://frnk-brnk.sk" />
-  <meta property="og:image" content="https://frnk-brnk.sk/og-image.jpg" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="sk_SK" />
   <meta property="og:site_name" content="Frnk brnk do sveta" />
-  
+
   <!-- ===== TWITTER CARDS ===== -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content="https://frnk-brnk.sk/og-image.jpg" />
-  
+  <meta name="twitter:image" content={ogImage} />
+
   <!-- ===== FAVICON ===== -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/icon-192.png" />
-  
+
   <!-- ===== PRELOAD CRITICAL RESOURCES (Core Web Vitals - LCP) ===== -->
   <link rel="preload" as="image" href="/book-pages/page-1.webp" type="image/webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  
+
   <!-- ===== FONTS (with display=swap for CLS) ===== -->
   <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" /></noscript>
-  
+
   <!-- ===== LAZY LOAD SCRIPTS (Stripe, Packeta, hCaptcha - load on scroll to form) ===== -->
   <script>
     (function(){
@@ -83,9 +97,9 @@ const {
       setTimeout(loadScripts,3000);
     })();
   </script>
-  
+
   <!-- GA4 je už implementované v index.astro s Consent Mode v2 -->
-  
+
   <!-- ===== PRODUCT SCHEMA (JSON-LD) ===== -->
   <script type="application/ld+json">
   {
@@ -108,6 +122,7 @@ const {
       "jobTitle": "Herec Slovenského komorného divadla v Martine"
     },
     "isbn": "978-80-975071-0-7",
+    "gtin13": "9788097507107",
     "bookFormat": "Hardcover",
     "numberOfPages": 48,
     "inLanguage": "sk",
@@ -120,7 +135,7 @@ const {
       "@type": "Offer",
       "url": "https://frnk-brnk.sk",
       "priceCurrency": "EUR",
-      "price": "11.99",
+      "price": "12.00",
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
@@ -152,11 +167,13 @@ const {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1",
       "reviewCount": "12"
     }
   }
   </script>
-  
+
   <!-- ===== ORGANIZATION SCHEMA ===== -->
   <script type="application/ld+json">
   {
@@ -174,7 +191,7 @@ const {
     "sameAs": []
   }
   </script>
-  
+
   <!-- ===== BREADCRUMB SCHEMA ===== -->
   <script type="application/ld+json">
   {
@@ -188,7 +205,7 @@ const {
     }]
   }
   </script>
-  
+
   <!-- ===== FAQ SCHEMA (pre AI vyhľadávače) ===== -->
   <script type="application/ld+json">
   {
@@ -230,7 +247,7 @@ const {
     ]
   }
   </script>
-  
+
   <!-- ===== GLOBAL STYLES ===== -->
   <style is:global>
     :root {
@@ -245,32 +262,32 @@ const {
       --color-sun-light: #fde68a;
       --color-earth: #c9a227;
       --color-red: #c73e3a;
-      
+
       /* Neutrálne */
       --color-cream: #fefcf6;
       --color-paper: #f9f6ef;
       --color-text: #2c3e2d;
       --color-text-light: #5a6b5c;
       --color-border: #d4d9d5;
-      
+
       /* Font */
       --font-main: 'Andika', Georgia, serif;
-      
+
       /* Tiene a zaoblenia */
       --shadow-sm: 0 2px 8px rgba(44, 62, 45, 0.08);
       --shadow-md: 0 4px 16px rgba(44, 62, 45, 0.12);
       --shadow-lg: 0 8px 32px rgba(44, 62, 45, 0.16);
-      
+
       --radius-sm: 8px;
       --radius-md: 16px;
       --radius-lg: 24px;
-      
+
       --transition: 0.25s ease;
     }
-    
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    
+
     body {
       font-family: var(--font-main);
       background: var(--color-cream);
@@ -278,16 +295,16 @@ const {
       line-height: 1.7;
       font-size: 17px;
     }
-    
+
     a { color: inherit; text-decoration: none; }
-    
+
     /* Core Web Vitals - CLS prevention */
-    img { 
-      max-width: 100%; 
-      height: auto; 
+    img {
+      max-width: 100%;
+      height: auto;
       display: block;
     }
-    
+
     ::selection { background: var(--color-sun); color: var(--color-text); }
   </style>
 </head>

@@ -1,0 +1,39 @@
+# Staré WordPress/WooCommerce URL -> nová homepage
+# 301 = permanentné presmerovanie (SEO friendly)
+
+# Obchod a produkty
+/obchod/* /#objednat 301
+/product-category/* /#objednat 301
+
+# Ilustrácie (staré produkty)
+/obchod/ilustracie/* /#objednat 301
+
+# Kniha
+/obchod/kniha/* /#objednat 301
+
+# Blog články
+/best-selling-artist-of-march/ / 301
+/the-5-art-business-models/ / 301
+/how-to-design-a-feature-wall/ / 301
+/its-all-about-colors-and-shapes/ / 301
+/best-selling-artist-of-january/ / 301
+/los-angeles-spring-class/ / 301
+/fair-directors-preview/ / 301
+/10-best-drawing-apps-and-art-apps/ / 301
+/london-new-futures-announced/ / 301
+
+# Eventy
+/events/* / 301
+/event/* / 301
+
+# Staré stránky
+/uvod/ / 301
+/viliam-hriadel/ /#autor 301
+/o-autorovi/ /#autor 301
+/kontakt/ / 301
+
+# WordPress pluginy
+/themencode-pdf-viewer/ / 301
+
+# Catch-all pre ostatné staré URL (voliteľné)
+# /obchod /#objednat 301

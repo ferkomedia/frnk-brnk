@@ -1,485 +1,451 @@
 ---
-// Thank you page - po úspešnej objednávke
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ďakujeme za objednávku! | Frnk brnk do sveta</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" />
+<Layout
+  title="Ďakujeme za objednávku! | Frnk brnk do sveta"
+  description="Vaša objednávka bola úspešne prijatá. Knihu doručíme do 3-5 pracovných dní."
+  noindex={true}
+>
 
-  <!-- GA4 + Conversion Tracking -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MDJY0G420X');
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDJY0G420X"></script>
-</head>
-<body>
-  <div class="page-wrapper">
-    <!-- Success Animation -->
-    <div class="success-icon">
-      <div class="checkmark-circle">
-        <svg class="checkmark" viewBox="0 0 52 52">
-          <circle class="checkmark-bg" cx="26" cy="26" r="25" fill="none"/>
-          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-        </svg>
-      </div>
-      <div class="confetti">
-        <span>🎉</span><span>✨</span><span>🎊</span><span>⭐</span>
+<div class="page-wrapper">
+  <!-- Success Animation -->
+  <div class="success-icon">
+    <div class="checkmark-circle">
+      <svg class="checkmark" viewBox="0 0 52 52">
+        <circle class="checkmark-bg" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <section class="content">
+    <h1>Ďakujeme za vašu objednávku!</h1>
+    <p class="subtitle">Vaša kniha je na ceste k vám</p>
+
+    <div class="order-summary">
+      <h3>Čo sa stane ďalej?</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <strong>Teraz</strong>
+            <p>Potvrdenie objednávky vo vašom emaile</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <strong>Do 24 hodín</strong>
+            <p>Knihu pripravíme a podpíšeme</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="timeline-content">
+            <strong>Do 48 hodín</strong>
+            <p>Odosielame cez Packeta</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+          </div>
+          <div class="timeline-content">
+            <strong>3-5 dní</strong>
+            <p>Kniha u vás doma!</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Main Content -->
-    <section class="content">
-      <h1>Ďakujeme za vašu objednávku!</h1>
-      <p class="subtitle">Vaša kniha je na ceste k vám</p>
+    <!-- Audio Bonus -->
+    <div class="bonus-section">
+      <h3>Váš bonus: Audio ukážka</h3>
+      <p>Vypočujte si ukážku kým čakáte na knihu!</p>
+      <audio controls class="audio-player">
+        <source src="/audio/riekanka-ukazka.mp3" type="audio/mpeg">
+        Váš prehliadač nepodporuje audio.
+      </audio>
+      <a href="/audio/riekanka-ukazka.mp3" download class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Stiahnuť MP3
+      </a>
+    </div>
 
-      <div class="order-summary">
-        <h3>📦 Čo sa stane ďalej?</h3>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-icon">📧</div>
-            <div class="timeline-content">
-              <strong>Teraz</strong>
-              <p>Potvrdenie objednávky vo vašom emaile</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-icon">📝</div>
-            <div class="timeline-content">
-              <strong>Do 24 hodín</strong>
-              <p>Knihu pripravíme a podpíšeme</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-icon">🚚</div>
-            <div class="timeline-content">
-              <strong>Do 48 hodín</strong>
-              <p>Odosielame cez Packeta</p>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-icon">🎁</div>
-            <div class="timeline-content">
-              <strong>3-5 dní</strong>
-              <p>Kniha u vás doma!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Audio Bonus -->
-      <div class="bonus-section">
-        <h3>🎧 Váš bonus: Audio ukážka</h3>
-        <p>Vypočujte si ukážku kým čakáte na knihu!</p>
-        <audio controls class="audio-player">
-          <source src="/audio/riekanka-ukazka.mp3" type="audio/mpeg">
-          Váš prehliadač nepodporuje audio.
-        </audio>
-        <a href="/audio/riekanka-ukazka.mp3" download class="download-btn">
-          <span>⬇️</span> Stiahnuť MP3
+    <!-- Social Share -->
+    <div class="share-section">
+      <h3>Zdieľajte radosť!</h3>
+      <p>Povedzte kamarátom o knihe pre ich deti</p>
+      <div class="share-buttons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://frnk-brnk.sk" target="_blank" rel="noopener" class="share-btn facebook">
+          <span>f</span> Facebook
         </a>
+        <a href="https://wa.me/?text=Práve%20som%20objednal%20skvelú%20detskú%20knihu%20Frnk%20brnk%20do%20sveta!%20https://frnk-brnk.sk" target="_blank" rel="noopener" class="share-btn whatsapp">
+          WhatsApp
+        </a>
+        <button class="share-btn copy" id="copy-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          Kopírovať link
+        </button>
       </div>
+    </div>
 
-      <!-- Social Share -->
-      <div class="share-section">
-        <h3>Zdieľajte radosť! 💝</h3>
-        <p>Povedzte kamarátom o knihe pre ich deti</p>
-        <div class="share-buttons">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://frnk-brnk.sk" target="_blank" class="share-btn facebook">
-            <span>f</span> Facebook
-          </a>
-          <a href="https://wa.me/?text=Práve%20som%20objednal%20skvelú%20detskú%20knihu%20Frnk%20brnk%20do%20sveta!%20https://frnk-brnk.sk" target="_blank" class="share-btn whatsapp">
-            <span>💬</span> WhatsApp
-          </a>
-          <button class="share-btn copy" id="copy-link">
-            <span>🔗</span> Kopírovať link
-          </button>
-        </div>
-      </div>
+    <!-- Back to Shop -->
+    <div class="back-section">
+      <p>Chcete objednať ďalšiu knihu ako darček?</p>
+      <a href="/" class="back-btn">Späť do obchodu</a>
+    </div>
+  </section>
 
-      <!-- Back to Shop -->
-      <div class="back-section">
-        <p>Chcete objednať ďalšiu knihu ako darček?</p>
-        <a href="/" class="back-btn">← Späť do obchodu</a>
-      </div>
-    </section>
+  <!-- Footer Note -->
+  <footer class="footer-note">
+    <p>Máte otázky? Napíšte nám na <a href="mailto:info@frnk-brnk.sk">info@frnk-brnk.sk</a></p>
+  </footer>
+</div>
 
-    <!-- Footer Note -->
-    <footer class="footer-note">
-      <p>Máte otázky? Napíšte nám na <a href="mailto:info@frnk-brnk.sk">info@frnk-brnk.sk</a></p>
-    </footer>
-  </div>
+<!-- Toast -->
+<div id="toast" class="toast">Link skopírovaný!</div>
 
-  <style>
-    :root {
-      --color-forest: #2C3E2D;
-      --color-sky: #87CEEB;
-      --color-sky-dark: #5BA4C9;
-      --color-sun: #FFD93D;
-      --color-cream: #FFF8E7;
-      --color-coral: #FF6B6B;
-      --color-green: #4CAF50;
-      --font-main: 'Andika', sans-serif;
-    }
+</Layout>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+<style>
+  .page-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+  }
 
-    body {
-      font-family: var(--font-main);
-      background: linear-gradient(180deg, var(--color-cream) 0%, white 100%);
-      min-height: 100vh;
-      color: var(--color-forest);
-    }
+  /* Success Animation */
+  .success-icon {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
 
-    .page-wrapper {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
-    }
+  .checkmark-circle {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1rem;
+  }
 
-    /* Success Animation */
-    .success-icon {
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-    }
+  .checkmark {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: var(--color-forest);
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px var(--color-forest);
+    animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+  }
 
-    .checkmark-circle {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 1rem;
-    }
+  .checkmark-bg {
+    stroke: var(--color-forest-light);
+    stroke-width: 3;
+  }
 
-    .checkmark {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      display: block;
-      stroke-width: 3;
-      stroke: var(--color-green);
-      stroke-miterlimit: 10;
-      box-shadow: inset 0px 0px 0px var(--color-green);
-      animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-    }
+  .checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.5s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
 
-    .checkmark-bg {
-      stroke: #e8f5e9;
-      stroke-width: 3;
-    }
+  @keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+  }
 
-    .checkmark-check {
-      transform-origin: 50% 50%;
-      stroke-dasharray: 48;
-      stroke-dashoffset: 48;
-      animation: stroke 0.5s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
-      stroke-width: 3;
-      stroke-linecap: round;
-    }
+  @keyframes scale {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
+  }
 
-    @keyframes stroke {
-      100% { stroke-dashoffset: 0; }
-    }
+  @keyframes fill {
+    100% { box-shadow: inset 0px 0px 0px 50px rgba(74, 124, 89, 0.1); }
+  }
 
-    @keyframes scale {
-      0%, 100% { transform: none; }
-      50% { transform: scale3d(1.1, 1.1, 1); }
-    }
+  /* Content */
+  .content {
+    text-align: center;
+  }
 
-    @keyframes fill {
-      100% { box-shadow: inset 0px 0px 0px 50px rgba(76, 175, 80, 0.1); }
-    }
+  h1 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
 
-    .confetti {
-      font-size: 1.5rem;
-      animation: bounce 1s ease infinite;
-    }
+  .subtitle {
+    color: var(--color-forest);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
 
-    .confetti span {
-      display: inline-block;
-      animation: float 2s ease-in-out infinite;
-    }
+  /* Order Summary */
+  .order-summary {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    text-align: left;
+  }
 
-    .confetti span:nth-child(1) { animation-delay: 0s; }
-    .confetti span:nth-child(2) { animation-delay: 0.2s; }
-    .confetti span:nth-child(3) { animation-delay: 0.4s; }
-    .confetti span:nth-child(4) { animation-delay: 0.6s; }
+  .order-summary h3 {
+    text-align: center;
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-    /* Content */
-    .content {
-      text-align: center;
-    }
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 
-    h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.5rem;
-      color: var(--color-forest);
-    }
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 
-    .subtitle {
-      color: var(--color-green);
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-    }
+  .timeline-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-forest);
+  }
 
-    /* Order Summary */
-    .order-summary {
-      background: white;
-      border-radius: 20px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      text-align: left;
-    }
+  .timeline-content strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
 
-    .order-summary h3 {
-      text-align: center;
-      font-size: 1.15rem;
-      margin-bottom: 1.25rem;
-    }
+  .timeline-content p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
 
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+  /* Bonus Section */
+  .bonus-section {
+    background: linear-gradient(135deg, var(--color-sky-dark) 0%, var(--color-sky) 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
 
-    .timeline-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
+  .bonus-section h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
 
-    .timeline-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--color-cream);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
+  .bonus-section p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
 
-    .timeline-content strong {
-      display: block;
-      font-size: 0.95rem;
-      color: var(--color-forest);
-    }
+  .audio-player {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 50px;
+  }
 
-    .timeline-content p {
-      font-size: 0.85rem;
-      color: #666;
-    }
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
 
-    /* Bonus Section */
-    .bonus-section {
-      background: linear-gradient(135deg, var(--color-sky-dark) 0%, #7ab8d4 100%);
-      color: white;
-      border-radius: 20px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
+  .download-btn:hover {
+    background: rgba(255,255,255,0.3);
+  }
 
-    .bonus-section h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-    }
+  .download-btn svg {
+    width: 18px;
+    height: 18px;
+  }
 
-    .bonus-section p {
-      font-size: 0.95rem;
-      opacity: 0.9;
-      margin-bottom: 1rem;
-    }
+  /* Share Section */
+  .share-section {
+    margin-bottom: 2rem;
+  }
 
-    .audio-player {
-      width: 100%;
-      margin-bottom: 1rem;
-      border-radius: 50px;
-    }
+  .share-section h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
 
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
+  .share-section > p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
 
-    .download-btn:hover {
-      background: rgba(255,255,255,0.3);
-    }
+  .share-buttons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
-    /* Share Section */
-    .share-section {
-      margin-bottom: 2rem;
-    }
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: var(--font-main);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
 
-    .share-section h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.25rem;
-    }
+  .share-btn:hover {
+    transform: translateY(-2px);
+  }
 
-    .share-section > p {
-      color: #666;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
+  .share-btn.facebook {
+    background: #1877f2;
+    color: white;
+  }
 
-    .share-buttons {
-      display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+  .share-btn.whatsapp {
+    background: #25d366;
+    color: white;
+  }
 
-    .share-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.25rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
-      font-family: var(--font-main);
-      border: none;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
+  .share-btn.copy {
+    background: var(--color-forest);
+    color: white;
+  }
 
-    .share-btn:hover {
-      transform: translateY(-2px);
-    }
+  .share-btn svg {
+    width: 16px;
+    height: 16px;
+  }
 
-    .share-btn.facebook {
-      background: #1877f2;
-      color: white;
-    }
+  /* Back Section */
+  .back-section {
+    padding: 1.5rem;
+    background: var(--color-paper);
+    border-radius: 16px;
+  }
 
-    .share-btn.whatsapp {
-      background: #25d366;
-      color: white;
-    }
+  .back-section p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.75rem;
+  }
 
-    .share-btn.copy {
-      background: var(--color-forest);
-      color: white;
-    }
+  .back-btn {
+    display: inline-block;
+    color: var(--color-forest);
+    text-decoration: none;
+    font-weight: 600;
+  }
 
-    /* Back Section */
-    .back-section {
-      padding: 1.5rem;
-      background: #f8f9fa;
-      border-radius: 16px;
-    }
+  /* Footer */
+  .footer-note {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+  }
 
-    .back-section p {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 0.75rem;
-    }
+  .footer-note p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
 
-    .back-btn {
-      display: inline-block;
-      color: var(--color-sky-dark);
-      text-decoration: none;
-      font-weight: 600;
-    }
+  .footer-note a {
+    color: var(--color-forest);
+  }
 
-    /* Footer */
-    .footer-note {
-      text-align: center;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #eee;
-    }
+  /* Toast notification */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--color-text);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
 
-    .footer-note p {
-      font-size: 0.9rem;
-      color: #888;
-    }
+  .toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+</style>
 
-    .footer-note a {
-      color: var(--color-sky-dark);
-    }
+<script>
+  // Track purchase conversion
+  const urlParams = new URLSearchParams(window.location.search);
+  const paymentId = urlParams.get('payment_id') || 'unknown';
 
-    /* Toast notification */
-    .toast {
-      position: fixed;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: var(--color-forest);
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 1000;
-    }
-
-    .toast.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
-  </style>
-
-  <!-- Toast -->
-  <div id="toast" class="toast">Link skopírovaný!</div>
-
-  <script>
-    // Track purchase conversion
-    const urlParams = new URLSearchParams(window.location.search);
-    const orderId = urlParams.get('order_id') || 'unknown';
-    const value = parseFloat(urlParams.get('value')) || 12;
-    const signed = urlParams.get('signed') === 'true';
-
+  if (typeof gtag !== 'undefined') {
     gtag('event', 'purchase', {
-      transaction_id: orderId,
-      value: value,
+      transaction_id: paymentId,
+      value: 12,
       currency: 'EUR',
       items: [{
-        item_id: 'FRNK-001',
+        item_id: 'frnk-brnk-kniha',
         item_name: 'Frnk brnk do sveta',
-        item_variant: signed ? 'Podpisana' : 'Klasicka',
-        price: value,
+        price: 12,
         quantity: 1
       }]
     });
+  }
 
-    // Copy link functionality
-    document.getElementById('copy-link').addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText('https://frnk-brnk.sk');
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
-      } catch (err) {
-        alert('Link: https://frnk-brnk.sk');
-      }
-    });
-  </script>
-</body>
-</html>
+  // Copy link functionality
+  document.getElementById('copy-link')?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('https://frnk-brnk.sk');
+      const toast = document.getElementById('toast');
+      toast?.classList.add('show');
+      setTimeout(() => toast?.classList.remove('show'), 2000);
+    } catch (err) {
+      alert('Link: https://frnk-brnk.sk');
+    }
+  });
+</script>

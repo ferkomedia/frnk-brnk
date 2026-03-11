@@ -1,510 +1,531 @@
 ---
-// Opt-in page - Audio ukážka za email
-const AUDIO_URL = "/audio/riekanka-ukazka.mp3"; // Nahraj vlastný audio súbor
+import Layout from '../layouts/Layout.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="sk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zadarmo: Audio ukážka z knihy Frnk brnk do sveta</title>
-  <meta name="description" content="Vypočujte si zadarmo audio ukážku riekaniek z detskej knihy Frnk brnk do sveta. Stačí zadať email." />
-  <meta name="robots" content="index, follow" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&display=swap" rel="stylesheet" />
+<Layout
+  title="Zadarmo: Audio ukážka z knihy Frnk brnk do sveta"
+  description="Vypočujte si zadarmo audio ukážku riekaniek z detskej knihy Frnk brnk do sveta. Stačí zadať email."
+  ogImage="https://frnk-brnk.sk/og-optin.jpg"
+>
 
-  <!-- GA4 -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MDJY0G420X');
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDJY0G420X"></script>
-</head>
-<body>
-  <div class="page-wrapper">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-badge">🎧 Audio ukážka ZADARMO</div>
-      <h1>Vypočujte si <span class="highlight">magickú riekanku</span> z knihy Frnk brnk do sveta</h1>
-      <p class="hero-desc">Nechajte deti počuť príbeh dvoch sýkoriek. Získajte audio ukážku priamo do vášho emailu.</p>
+<div class="page-wrapper">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">Audio ukážka ZADARMO</div>
+    <h1>Vypočujte si <span class="highlight">magickú riekanku</span> z knihy Frnk brnk do sveta</h1>
+    <p class="hero-desc">Nechajte deti počuť príbeh dvoch sýkoriek. Získajte audio ukážku priamo do vášho emailu.</p>
 
-      <div class="book-preview">
-        <img src="/book-pages/page-1.webp" alt="Frnk brnk do sveta" class="book-cover" width="280" height="392" />
-        <div class="audio-wave">
-          <div class="wave-bar"></div>
-          <div class="wave-bar"></div>
-          <div class="wave-bar"></div>
-          <div class="wave-bar"></div>
-          <div class="wave-bar"></div>
-          <div class="wave-bar"></div>
-          <div class="wave-bar"></div>
-        </div>
+    <div class="book-preview">
+      <img src="/book-pages/page-1.webp" alt="Obálka detskej knihy Frnk brnk do sveta od Viliama Hriadela" class="book-cover" width="280" height="392" />
+      <div class="audio-wave">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
       </div>
-    </section>
-
-    <!-- Opt-in Form -->
-    <section class="optin-section">
-      <form id="optin-form" class="optin-form">
-        <div class="form-group">
-          <label for="email">Váš email</label>
-          <input type="email" id="email" name="email" placeholder="meno@email.sk" required />
-        </div>
-        <button type="submit" class="submit-btn">
-          <span class="btn-icon">🎵</span>
-          <span>Získať audio ukážku</span>
-        </button>
-        <p class="privacy-note">Váš email je v bezpečí. Žiadny spam, len hodnota.</p>
-      </form>
-
-      <div class="benefits">
-        <div class="benefit">
-          <span class="benefit-icon">✓</span>
-          <span>2-minútová ukážka</span>
-        </div>
-        <div class="benefit">
-          <span class="benefit-icon">✓</span>
-          <span>Profesionálny prednes</span>
-        </div>
-        <div class="benefit">
-          <span class="benefit-icon">✓</span>
-          <span>Ihneď vo vašom emaile</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="social-proof">
-      <p class="proof-text">Už <strong>500+ rodičov</strong> si vypočulo ukážku</p>
-      <div class="stars">★★★★★</div>
-      <p class="testimonial">"Deti si to zamilovali! Hneď sme objednali knihu."</p>
-      <p class="testimonial-author">— Katarína, mama 2 detí</p>
-    </section>
-  </div>
-
-  <!-- Exit Intent Popup -->
-  <div id="exit-popup" class="popup-overlay">
-    <div class="popup-content">
-      <button class="popup-close" aria-label="Zavrieť">&times;</button>
-      <div class="popup-icon">🎁</div>
-      <h2>Počkajte!</h2>
-      <p>Získajte audio ukážku <strong>zadarmo</strong> a potešte vaše deti už dnes.</p>
-      <form id="popup-form" class="popup-form">
-        <input type="email" name="email" placeholder="Váš email" required />
-        <button type="submit">Získať zadarmo</button>
-      </form>
     </div>
+  </section>
+
+  <!-- Opt-in Form -->
+  <section class="optin-section">
+    <form id="optin-form" class="optin-form">
+      <div class="form-group">
+        <label for="email">Váš email</label>
+        <input type="email" id="email" name="email" placeholder="meno@email.sk" required />
+      </div>
+      <button type="submit" class="submit-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13M9 9l12-2"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <span>Získať audio ukážku</span>
+      </button>
+      <p class="privacy-note">Váš email je v bezpečí. Žiadny spam, len hodnota.</p>
+    </form>
+
+    <div class="benefits">
+      <div class="benefit">
+        <span class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span>2-minútová ukážka</span>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span>Profesionálny prednes</span>
+      </div>
+      <div class="benefit">
+        <span class="benefit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        <span>Ihneď vo vašom emaile</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof">
+    <p class="proof-text">Už <strong>500+ rodičov</strong> si vypočulo ukážku</p>
+    <div class="stars">★★★★★</div>
+    <p class="testimonial">"Deti si to zamilovali! Hneď sme objednali knihu."</p>
+    <p class="testimonial-author">— Katarína, mama 2 detí</p>
+  </section>
+
+  <!-- Back link -->
+  <div class="back-link">
+    <a href="/">Späť na hlavnú stránku</a>
   </div>
+</div>
 
-  <style>
-    :root {
-      --color-forest: #2C3E2D;
-      --color-sky: #87CEEB;
-      --color-sky-dark: #5BA4C9;
-      --color-sun: #FFD93D;
-      --color-cream: #FFF8E7;
-      --color-coral: #FF6B6B;
-      --font-main: 'Andika', sans-serif;
-    }
+<!-- Exit Intent Popup -->
+<div id="exit-popup" class="popup-overlay">
+  <div class="popup-content">
+    <button class="popup-close" aria-label="Zavrieť">&times;</button>
+    <div class="popup-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+    </div>
+    <h2>Počkajte!</h2>
+    <p>Získajte audio ukážku <strong>zadarmo</strong> a potešte vaše deti už dnes.</p>
+    <form id="popup-form" class="popup-form">
+      <input type="email" name="email" placeholder="Váš email" required />
+      <button type="submit">Získať zadarmo</button>
+    </form>
+  </div>
+</div>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+</Layout>
 
-    body {
-      font-family: var(--font-main);
-      background: linear-gradient(180deg, var(--color-cream) 0%, white 100%);
-      min-height: 100vh;
-      color: var(--color-forest);
-    }
+<style>
+  .page-wrapper {
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+  }
 
-    .page-wrapper {
-      max-width: 540px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 3rem;
-    }
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
+  .hero-badge {
+    display: inline-block;
+    background: var(--color-sun);
+    color: var(--color-text);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    animation: pulse 2s infinite;
+  }
 
-    .hero-badge {
-      display: inline-block;
-      background: var(--color-sun);
-      color: var(--color-forest);
-      padding: 0.5rem 1.25rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      animation: pulse 2s infinite;
-    }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
+  h1 {
+    font-size: 1.85rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
 
-    h1 {
-      font-size: 1.85rem;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-      color: var(--color-forest);
-    }
+  .highlight {
+    color: var(--color-sky-dark);
+    position: relative;
+  }
 
-    .highlight {
-      color: var(--color-sky-dark);
-      position: relative;
-    }
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
 
-    .hero-desc {
-      font-size: 1.1rem;
-      color: #5a5a5a;
-      margin-bottom: 2rem;
-      line-height: 1.5;
-    }
+  .book-preview {
+    position: relative;
+    display: inline-block;
+  }
 
-    .book-preview {
-      position: relative;
-      display: inline-block;
-    }
+  .book-cover {
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.3s ease;
+  }
 
-    .book-cover {
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(44, 62, 45, 0.25);
-      transform: perspective(1000px) rotateY(-5deg);
-      transition: transform 0.3s ease;
-    }
+  .book-cover:hover {
+    transform: perspective(1000px) rotateY(0deg);
+  }
 
-    .book-cover:hover {
-      transform: perspective(1000px) rotateY(0deg);
-    }
+  .audio-wave {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-md);
+  }
 
-    .audio-wave {
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 4px;
-      background: white;
-      padding: 10px 20px;
-      border-radius: 50px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
+  .wave-bar {
+    width: 4px;
+    height: 20px;
+    background: var(--color-sky-dark);
+    border-radius: 2px;
+    animation: wave 1s ease-in-out infinite;
+  }
 
-    .wave-bar {
-      width: 4px;
-      height: 20px;
-      background: var(--color-sky-dark);
-      border-radius: 2px;
-      animation: wave 1s ease-in-out infinite;
-    }
+  .wave-bar:nth-child(1) { animation-delay: 0s; }
+  .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+  .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+  .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+  .wave-bar:nth-child(5) { animation-delay: 0.4s; }
+  .wave-bar:nth-child(6) { animation-delay: 0.5s; }
+  .wave-bar:nth-child(7) { animation-delay: 0.6s; }
 
-    .wave-bar:nth-child(1) { animation-delay: 0s; }
-    .wave-bar:nth-child(2) { animation-delay: 0.1s; }
-    .wave-bar:nth-child(3) { animation-delay: 0.2s; }
-    .wave-bar:nth-child(4) { animation-delay: 0.3s; }
-    .wave-bar:nth-child(5) { animation-delay: 0.4s; }
-    .wave-bar:nth-child(6) { animation-delay: 0.5s; }
-    .wave-bar:nth-child(7) { animation-delay: 0.6s; }
+  @keyframes wave {
+    0%, 100% { height: 10px; }
+    50% { height: 25px; }
+  }
 
-    @keyframes wave {
-      0%, 100% { height: 10px; }
-      50% { height: 25px; }
-    }
+  /* Opt-in Form */
+  .optin-section {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+  }
 
-    /* Opt-in Form */
-    .optin-section {
-      background: white;
-      border-radius: 24px;
-      padding: 2rem;
-      box-shadow: 0 8px 40px rgba(44, 62, 45, 0.1);
-      margin-bottom: 2rem;
-    }
+  .optin-form {
+    margin-bottom: 1.5rem;
+  }
 
-    .optin-form {
-      margin-bottom: 1.5rem;
-    }
+  .form-group {
+    margin-bottom: 1rem;
+  }
 
-    .form-group {
-      margin-bottom: 1rem;
-    }
+  .form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
 
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
+  .form-group input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
 
-    .form-group input {
-      width: 100%;
-      padding: 1rem 1.25rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-family: var(--font-main);
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
+  .form-group input:focus {
+    outline: none;
+    border-color: var(--color-forest);
+    box-shadow: 0 0 0 4px rgba(74, 124, 89, 0.15);
+  }
 
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--color-sky-dark);
-      box-shadow: 0 0 0 4px rgba(91, 164, 201, 0.15);
-    }
+  .submit-btn {
+    width: 100%;
+    padding: 1.1rem 2rem;
+    background: linear-gradient(135deg, var(--color-red) 0%, #d94545 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(199, 62, 58, 0.4);
+  }
 
-    .submit-btn {
-      width: 100%;
-      padding: 1.1rem 2rem;
-      background: linear-gradient(135deg, var(--color-coral) 0%, #ff8a7a 100%);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      font-family: var(--font-main);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-    }
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(199, 62, 58, 0.5);
+  }
 
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(255, 107, 107, 0.5);
-    }
+  .submit-btn svg {
+    width: 24px;
+    height: 24px;
+  }
 
-    .btn-icon {
-      font-size: 1.3rem;
-    }
+  .privacy-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
 
-    .privacy-note {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #888;
-      margin-top: 1rem;
-    }
+  .benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    .benefits {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+  }
 
-    .benefit {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.95rem;
-    }
+  .benefit-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--color-sun);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
 
-    .benefit-icon {
-      width: 24px;
-      height: 24px;
-      background: var(--color-sun);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--color-forest);
-    }
+  .benefit-icon svg {
+    width: 14px;
+    height: 14px;
+    color: var(--color-text);
+  }
 
-    /* Social Proof */
-    .social-proof {
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(135, 206, 235, 0.1);
-      border-radius: 16px;
-    }
+  /* Social Proof */
+  .social-proof {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(107, 143, 163, 0.1);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+  }
 
-    .proof-text {
-      font-size: 0.95rem;
-      margin-bottom: 0.5rem;
-    }
+  .proof-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
 
-    .stars {
-      color: var(--color-sun);
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
+  .stars {
+    color: var(--color-sun);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
 
-    .testimonial {
-      font-style: italic;
-      color: #666;
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-    }
+  .testimonial {
+    font-style: italic;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
 
-    .testimonial-author {
-      font-size: 0.85rem;
-      color: #888;
-    }
+  .testimonial-author {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+  }
 
-    /* Exit Popup */
-    .popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 1rem;
-      backdrop-filter: blur(4px);
-    }
+  /* Back link */
+  .back-link {
+    text-align: center;
+  }
 
-    .popup-overlay.active {
-      display: flex;
-      animation: fadeIn 0.3s ease;
-    }
+  .back-link a {
+    color: var(--color-forest);
+    font-weight: 600;
+    text-decoration: none;
+  }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+  .back-link a:hover {
+    text-decoration: underline;
+  }
 
-    .popup-content {
-      background: white;
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      max-width: 400px;
-      text-align: center;
-      position: relative;
-      animation: slideUp 0.3s ease;
-    }
+  /* Exit Popup */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+  }
 
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+  .popup-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
 
-    .popup-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      width: 32px;
-      height: 32px;
-      border: none;
-      background: #f0f0f0;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      line-height: 1;
-      color: #666;
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 
-    .popup-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+  .popup-content {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    animation: slideUp 0.3s ease;
+  }
 
-    .popup-content h2 {
-      font-size: 1.75rem;
-      margin-bottom: 0.75rem;
-      color: var(--color-forest);
-    }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
 
-    .popup-content p {
-      color: #666;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
-    }
+  .popup-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--color-paper);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    color: var(--color-text-light);
+  }
 
-    .popup-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+  .popup-icon {
+    margin-bottom: 1rem;
+  }
 
-    .popup-form input {
-      padding: 1rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-family: var(--font-main);
-    }
+  .popup-icon svg {
+    width: 48px;
+    height: 48px;
+    color: var(--color-sun);
+  }
 
-    .popup-form button {
-      padding: 1rem;
-      background: var(--color-coral);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      font-family: var(--font-main);
-      cursor: pointer;
-    }
+  .popup-content h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
 
-    @media (max-width: 480px) {
-      h1 { font-size: 1.5rem; }
-      .optin-section { padding: 1.5rem; }
-    }
-  </style>
+  .popup-content p {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
 
-  <script>
-    // Exit Intent Detection
-    let exitShown = false;
-    const popup = document.getElementById('exit-popup');
-    const closeBtn = popup.querySelector('.popup-close');
+  .popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 
-    document.addEventListener('mouseout', (e) => {
-      if (e.clientY < 10 && !exitShown && !localStorage.getItem('exitShown')) {
-        popup.classList.add('active');
-        exitShown = true;
-        localStorage.setItem('exitShown', 'true');
+  .popup-form input {
+    padding: 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: var(--font-main);
+  }
+
+  .popup-form input:focus {
+    outline: none;
+    border-color: var(--color-forest);
+  }
+
+  .popup-form button {
+    padding: 1rem;
+    background: var(--color-red);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .popup-form button:hover {
+    background: #b53535;
+  }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    .optin-section { padding: 1.5rem; }
+  }
+</style>
+
+<script>
+  // Exit Intent Detection
+  let exitShown = false;
+  const popup = document.getElementById('exit-popup');
+  const closeBtn = popup?.querySelector('.popup-close');
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.clientY < 10 && !exitShown && !localStorage.getItem('optinExitShown')) {
+      popup?.classList.add('active');
+      exitShown = true;
+      localStorage.setItem('optinExitShown', 'true');
+      if (typeof gtag !== 'undefined') {
         gtag('event', 'exit_intent_shown', { page: 'optin' });
       }
-    });
+    }
+  });
 
-    closeBtn.addEventListener('click', () => {
-      popup.classList.remove('active');
-    });
+  closeBtn?.addEventListener('click', () => {
+    popup?.classList.remove('active');
+  });
 
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) popup.classList.remove('active');
-    });
+  popup?.addEventListener('click', (e) => {
+    if (e.target === popup) popup.classList.remove('active');
+  });
 
-    // Form Submissions
-    document.getElementById('optin-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
+  // Form Submissions
+  document.getElementById('optin-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const email = (form.email as HTMLInputElement).value;
 
-      // Track conversion
+    // Track conversion
+    if (typeof gtag !== 'undefined') {
       gtag('event', 'generate_lead', {
         currency: 'EUR',
         value: 0,
         lead_source: 'optin_page'
       });
+    }
 
-      // TODO: Send to your email service (Mailchimp, ConvertKit, etc.)
-      // await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) });
+    // TODO: Send to your email service (Mailchimp, ConvertKit, etc.)
+    // await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) });
 
-      // Redirect to upsell
-      window.location.href = '/upsell?email=' + encodeURIComponent(email);
-    });
+    // Redirect to upsell
+    window.location.href = '/upsell?email=' + encodeURIComponent(email);
+  });
 
-    document.getElementById('popup-form').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
+  document.getElementById('popup-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const email = (form.email as HTMLInputElement).value;
 
+    if (typeof gtag !== 'undefined') {
       gtag('event', 'generate_lead', {
         currency: 'EUR',
         value: 0,
         lead_source: 'exit_popup'
       });
+    }
 
-      window.location.href = '/upsell?email=' + encodeURIComponent(email);
-    });
-  </script>
-</body>
-</html>
+    window.location.href = '/upsell?email=' + encodeURIComponent(email);
+  });
+</script>
