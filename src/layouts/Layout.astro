@@ -136,16 +136,30 @@ const canonical = canonicalUrl || new URL(Astro.url.pathname, "https://frnk-brnk
       "url": "https://frnk-brnk.sk",
       "priceCurrency": "EUR",
       "price": "12.00",
+      "priceValidUntil": "2026-12-31",
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
         "name": "FerkoMedia Video marketing"
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": ["SK", "CZ", "DE", "AT", "PL", "HU", "GB", "IE", "NL", "BE", "FR", "IT", "ES", "PT", "CH", "RO", "BG", "HR", "SI", "EE", "LV", "LT", "SE", "DK", "FI", "GR", "LU"],
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
       },
       "shippingDetails": {
         "@type": "OfferShippingDetails",
         "shippingDestination": {
           "@type": "DefinedRegion",
           "addressCountry": ["SK", "CZ", "DE", "AT", "PL", "HU", "GB", "IE", "NL", "BE", "FR", "IT", "ES", "PT", "CH", "RO", "BG", "HR", "SI", "EE", "LV", "LT", "SE", "DK", "FI", "GR", "LU"]
+        },
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "3.50",
+          "currency": "EUR"
         },
         "deliveryTime": {
           "@type": "ShippingDeliveryTime",
@@ -170,7 +184,48 @@ const canonical = canonicalUrl || new URL(Astro.url.pathname, "https://frnk-brnk
       "bestRating": "5",
       "worstRating": "1",
       "reviewCount": "12"
-    }
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Martina K."
+        },
+        "reviewBody": "Krasna kniha, syn ju miluje. Citame ju kazdy vecer pred spanim."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Peter S."
+        },
+        "reviewBody": "Poslali sme vnukom do Londyna, boli nadseni. Rychle dorucenie."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Jana M."
+        },
+        "reviewBody": "Prekrasne ilustracie a versisky ktore si deti rychlo zapamataju."
+      }
+    ]
   }
   </script>
 
