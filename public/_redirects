@@ -1,15 +1,40 @@
-# Staré WordPress/WooCommerce URL -> nová homepage
-# 301 = permanentné presmerovanie (SEO friendly)
+# ===========================================
+# FRNK-BRNK.SK - 301 REDIRECTS
+# Staré WordPress/WooCommerce URL -> nová one-page
+# ===========================================
 
-# Obchod a produkty
-/obchod/* /#objednat 301
+# Kniha - rôzne varianty
+/frnk-brnk-kniha/ /#objednat 301
+/frnk-brnk-kniha /#objednat 301
+/kniha-frnk-brnk-do-sveta/ /#objednat 301
+/detska-kniha-frnk-brnk-do-sveta-kupit/ /#objednat 301
+/frnk-brnk-kniha-viliam-hriadel-pdf/ /#objednat 301
+/obchod/kniha/* /#objednat 301
+
+# Kontakt
+/frnk-brnk-kontakt/ / 301
+/kontakt/ / 301
+
+# Košík a pokladňa (WooCommerce)
+/kosik/ /#objednat 301
+/pokladna/ /#objednat 301
+
+# Kategórie
+/category/* / 301
 /product-category/* /#objednat 301
 
-# Ilustrácie (staré produkty)
-/obchod/ilustracie/* /#objednat 301
+# Autor
+/author/* /#autor 301
+/viliam-hriadel/ /#autor 301
+/o-autorovi/ /#autor 301
 
-# Kniha
-/obchod/kniha/* /#objednat 301
+# Obchod a ilustrácie
+/obchod/* /#objednat 301
+/obchod /#objednat 301
+
+# Eventy
+/events/* / 301
+/event/* / 301
 
 # Blog články
 /best-selling-artist-of-march/ / 301
@@ -22,18 +47,23 @@
 /10-best-drawing-apps-and-art-apps/ / 301
 /london-new-futures-announced/ / 301
 
-# Eventy
-/events/* / 301
-/event/* / 301
-
 # Staré stránky
 /uvod/ / 301
-/viliam-hriadel/ /#autor 301
-/o-autorovi/ /#autor 301
-/kontakt/ / 301
+/obchodne-podmienky/ / 301
+/ochrana-udajov/ / 301
 
-# WordPress pluginy
+# WordPress systémové
+/wp-content/* / 301
+/wp-admin/* / 301
+/wp-includes/* / 301
 /themencode-pdf-viewer/ / 301
 
-# Catch-all pre ostatné staré URL (voliteľné)
-# /obchod /#objednat 301
+# Feedy
+/feed/ / 301
+/*/feed/ / 301
+
+# Súbory
+/locations.kml / 301
+
+# Query stringy - Cloudflare ich ignoruje, ale pre istotu
+# WooCommerce add-to-cart sa rieši cez hlavné pravidlá vyššie
