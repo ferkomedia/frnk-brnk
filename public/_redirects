@@ -1,12 +1,32 @@
 # ===========================================
 # FRNK-BRNK.SK - 301 REDIRECTS
-# Staré WordPress/WooCommerce URL -> nová one-page
+# Staré WordPress/WooCommerce + Shoptet URL -> nová one-page
 # ===========================================
+
+# -------------------------------------------
+# SHOPTET - staré URL (spôsobujú 404 v Search Console)
+# -------------------------------------------
+/login/ / 301
+/login / 301
+/registracia/ / 301
+/registracia / 301
+/klient/* / 301
+/kosik/ / 301
+/kosik / 301
+/objednavka/* / 301
+/kontakty/ / 301
+/kontakty / 301
+/podmienky-ochrany-osobnych-udajov/ / 301
+/kniha-frnk-brnk-do-sveta-2/ /#objednat 301
+/kniha-frnk-brnk-do-sveta/ /#objednat 301
+
+# -------------------------------------------
+# WORDPRESS / WOOCOMMERCE - staré URL
+# -------------------------------------------
 
 # Kniha - rôzne varianty
 /frnk-brnk-kniha/ /#objednat 301
 /frnk-brnk-kniha /#objednat 301
-/kniha-frnk-brnk-do-sveta/ /#objednat 301
 /detska-kniha-frnk-brnk-do-sveta-kupit/ /#objednat 301
 /frnk-brnk-kniha-viliam-hriadel-pdf/ /#objednat 301
 /obchod/kniha/* /#objednat 301
@@ -16,7 +36,6 @@
 /kontakt/ / 301
 
 # Košík a pokladňa (WooCommerce)
-/kosik/ /#objednat 301
 /pokladna/ /#objednat 301
 
 # Kategórie
@@ -64,6 +83,3 @@
 
 # Súbory
 /locations.kml / 301
-
-# Query stringy - Cloudflare ich ignoruje, ale pre istotu
-# WooCommerce add-to-cart sa rieši cez hlavné pravidlá vyššie
